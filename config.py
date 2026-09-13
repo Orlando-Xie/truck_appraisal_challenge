@@ -38,11 +38,11 @@ GEMINI_FLASH_CANDIDATES = [
     m.strip()
     for m in os.getenv(
         "GEMINI_FLASH_MODELS",
-        # Cheapest capable vision models first. Lite is last-resort: it is cheaper
-        # but weaker at generation cues, which actually move the price.
-        "gemini-2.5-flash,gemini-3.5-flash,gemini-3.6-flash,gemini-3.7-flash,"
-        "gemini-3.8-flash,gemini-3-flash-preview,gemini-flash-latest,"
-        "gemini-2.5-flash-lite,gemini-3.5-flash-lite,gemini-3.1-flash-lite",
+        # Prefer current Flash ids first. gemini-2.5-flash is still listed
+        # but returns 404 for new keys ("no longer available to new users").
+        "gemini-3.6-flash,gemini-3.5-flash,gemini-3.8-flash,gemini-3.7-flash,"
+        "gemini-3-flash-preview,gemini-flash-latest,"
+        "gemini-2.5-flash,gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-2.5-flash-lite",
     ).split(",")
     if m.strip()
 ]
@@ -50,7 +50,7 @@ GEMINI_PRO_CANDIDATES = [
     m.strip()
     for m in os.getenv(
         "GEMINI_PRO_MODELS",
-        "gemini-2.5-flash,gemini-3.5-flash,gemini-3.6-flash",
+        "gemini-3.6-flash,gemini-3.5-flash,gemini-2.5-flash",
     ).split(",")
     if m.strip()
 ]

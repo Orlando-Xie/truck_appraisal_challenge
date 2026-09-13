@@ -1,148 +1,281 @@
 {
-  "turkiye_multiplier": 1.786,
+  "turkiye_multiplier": 1.9904,
   "eur_try": 47.5,
-  "n_listings": 70,
-  "source": "manual_seed",
-  "notes": "Fitted as the median of (Turkish asking price / EURTRY / European-model midpoint) on 70 listings. Quartiles 1.49-2.24. Source: manual_seed. 23 make/age segments with at least 3 seeds.",
-  "fitted_at": "2026-09-13T01:16:52.722462+00:00",
+  "n_listings": 843,
+  "source": "arabam_manifest",
+  "use_segments": false,
+  "notes": "Fitted as the median of (Turkish asking price / EURTRY / European-model midpoint) on 843 listings. Quartiles 1.52-2.63. Source: arabam_manifest. 45 make/age segments with at least 3 seeds.",
+  "fitted_at": "2026-09-13T19:01:22.854230+00:00",
   "segments": {
-    "Mercedes-Benz": {
-      "n": 15,
-      "multiplier": 1.7782,
-      "p25": 1.339,
-      "p75": 2.08
+    "Renault": {
+      "n": 121,
+      "multiplier": 2.0115,
+      "p25": 1.428,
+      "p75": 2.821
     },
-    "2016-2019": {
-      "n": 37,
-      "multiplier": 1.7854,
-      "p25": 1.33,
-      "p75": 2.465
+    "pre-2012": {
+      "n": 339,
+      "multiplier": 2.3309,
+      "p25": 1.712,
+      "p75": 2.941
     },
-    "Mercedes-Benz|2016-2019": {
-      "n": 6,
-      "multiplier": 1.5542,
-      "p25": 0.935,
-      "p75": 2.426
+    "Renault|pre-2012": {
+      "n": 50,
+      "multiplier": 2.6418,
+      "p25": 1.932,
+      "p75": 3.256
+    },
+    "IVECO": {
+      "n": 46,
+      "multiplier": 2.2666,
+      "p25": 1.698,
+      "p75": 2.502
+    },
+    "IVECO|pre-2012": {
+      "n": 18,
+      "multiplier": 1.9655,
+      "p25": 1.686,
+      "p75": 2.321
+    },
+    "Ford": {
+      "n": 116,
+      "multiplier": 1.7097,
+      "p25": 1.333,
+      "p75": 1.931
     },
     "2012-2015": {
-      "n": 11,
-      "multiplier": 1.7599,
-      "p25": 1.68,
-      "p75": 2.206
+      "n": 180,
+      "multiplier": 2.4111,
+      "p25": 1.793,
+      "p75": 2.942
     },
-    "Mercedes-Benz|2012-2015": {
-      "n": 3,
-      "multiplier": 1.7599,
-      "p25": 1.734,
-      "p75": 1.966
+    "Ford|2012-2015": {
+      "n": 38,
+      "multiplier": 1.3292,
+      "p25": 1.283,
+      "p75": 1.57
     },
-    "2020+": {
-      "n": 19,
-      "multiplier": 1.868,
-      "p25": 1.54,
-      "p75": 2.125
+    "DAF": {
+      "n": 104,
+      "multiplier": 1.9848,
+      "p25": 1.693,
+      "p75": 2.535
     },
-    "Mercedes-Benz|2020+": {
-      "n": 5,
-      "multiplier": 1.868,
-      "p25": 1.85,
-      "p75": 1.988
+    "DAF|pre-2012": {
+      "n": 49,
+      "multiplier": 2.0676,
+      "p25": 1.635,
+      "p75": 2.525
     },
     "MAN": {
+      "n": 66,
+      "multiplier": 1.8949,
+      "p25": 1.513,
+      "p75": 2.634
+    },
+    "MAN|pre-2012": {
+      "n": 33,
+      "multiplier": 2.2815,
+      "p25": 1.736,
+      "p75": 2.803
+    },
+    "Mercedes-Benz": {
+      "n": 238,
+      "multiplier": 2.1566,
+      "p25": 1.571,
+      "p75": 2.671
+    },
+    "Mercedes-Benz|pre-2012": {
+      "n": 82,
+      "multiplier": 2.388,
+      "p25": 1.894,
+      "p75": 2.891
+    },
+    "IVECO|2012-2015": {
+      "n": 12,
+      "multiplier": 2.5307,
+      "p25": 2.424,
+      "p75": 2.627
+    },
+    "Scania": {
+      "n": 93,
+      "multiplier": 2.5999,
+      "p25": 1.855,
+      "p75": 3.412
+    },
+    "Scania|2012-2015": {
+      "n": 11,
+      "multiplier": 3.4123,
+      "p25": 3.072,
+      "p75": 3.636
+    },
+    "Volvo": {
+      "n": 40,
+      "multiplier": 1.7488,
+      "p25": 1.584,
+      "p75": 2.73
+    },
+    "Volvo|pre-2012": {
+      "n": 25,
+      "multiplier": 1.9726,
+      "p25": 1.438,
+      "p75": 2.964
+    },
+    "Scania|pre-2012": {
+      "n": 58,
+      "multiplier": 2.7551,
+      "p25": 2.271,
+      "p75": 3.513
+    },
+    "MAN|2012-2015": {
+      "n": 8,
+      "multiplier": 2.8413,
+      "p25": 2.679,
+      "p75": 3.407
+    },
+    "2016-2019": {
+      "n": 65,
+      "multiplier": 2.4036,
+      "p25": 1.923,
+      "p75": 2.657
+    },
+    "Mercedes-Benz|2016-2019": {
+      "n": 14,
+      "multiplier": 2.2995,
+      "p25": 2.002,
+      "p75": 2.58
+    },
+    "BMC": {
+      "n": 18,
+      "multiplier": 1.0991,
+      "p25": 0.905,
+      "p75": 1.246
+    },
+    "BMC|2012-2015": {
+      "n": 5,
+      "multiplier": 1.1261,
+      "p25": 1.095,
+      "p75": 1.174
+    },
+    "2020+": {
+      "n": 259,
+      "multiplier": 1.5763,
+      "p25": 1.382,
+      "p75": 1.824
+    },
+    "Ford|2020+": {
+      "n": 54,
+      "multiplier": 1.8899,
+      "p25": 1.756,
+      "p75": 2.181
+    },
+    "DAF|2012-2015": {
       "n": 10,
-      "multiplier": 2.306,
-      "p25": 1.846,
-      "p75": 2.6
+      "multiplier": 2.9061,
+      "p25": 2.87,
+      "p75": 3.203
+    },
+    "Mercedes-Benz|2012-2015": {
+      "n": 82,
+      "multiplier": 2.4111,
+      "p25": 2.067,
+      "p75": 2.905
+    },
+    "Renault|2016-2019": {
+      "n": 10,
+      "multiplier": 2.4863,
+      "p25": 2.41,
+      "p75": 2.638
+    },
+    "DAF|2016-2019": {
+      "n": 8,
+      "multiplier": 2.5153,
+      "p25": 2.438,
+      "p75": 2.723
+    },
+    "BMC|pre-2012": {
+      "n": 11,
+      "multiplier": 0.9739,
+      "p25": 0.861,
+      "p75": 1.161
+    },
+    "Scania|2020+": {
+      "n": 17,
+      "multiplier": 1.4261,
+      "p25": 1.384,
+      "p75": 1.55
+    },
+    "Scania|2016-2019": {
+      "n": 7,
+      "multiplier": 2.6373,
+      "p25": 2.189,
+      "p75": 2.911
+    },
+    "Mercedes-Benz|2020+": {
+      "n": 60,
+      "multiplier": 1.4019,
+      "p25": 1.27,
+      "p75": 1.536
+    },
+    "Renault|2012-2015": {
+      "n": 11,
+      "multiplier": 3.0064,
+      "p25": 2.93,
+      "p75": 3.402
+    },
+    "Ford|pre-2012": {
+      "n": 13,
+      "multiplier": 1.3864,
+      "p25": 0.951,
+      "p75": 1.767
+    },
+    "Renault|2020+": {
+      "n": 50,
+      "multiplier": 1.4403,
+      "p25": 1.321,
+      "p75": 1.577
+    },
+    "IVECO|2016-2019": {
+      "n": 7,
+      "multiplier": 2.6507,
+      "p25": 2.179,
+      "p75": 2.814
+    },
+    "Ford|2016-2019": {
+      "n": 11,
+      "multiplier": 1.5638,
+      "p25": 1.469,
+      "p75": 2.092
+    },
+    "Volvo|2020+": {
+      "n": 12,
+      "multiplier": 1.6572,
+      "p25": 1.584,
+      "p75": 1.747
+    },
+    "IVECO|2020+": {
+      "n": 9,
+      "multiplier": 1.5183,
+      "p25": 1.431,
+      "p75": 1.694
     },
     "MAN|2016-2019": {
       "n": 5,
-      "multiplier": 2.4654,
-      "p25": 0.931,
-      "p75": 2.63
+      "multiplier": 1.5968,
+      "p25": 1.591,
+      "p75": 2.187
     },
-    "Scania": {
-      "n": 8,
-      "multiplier": 1.7732,
-      "p25": 1.59,
-      "p75": 1.835
+    "DAF|2020+": {
+      "n": 37,
+      "multiplier": 1.8133,
+      "p25": 1.612,
+      "p75": 1.982
     },
-    "Scania|2016-2019": {
-      "n": 6,
-      "multiplier": 1.7732,
-      "p25": 1.645,
-      "p75": 1.93
-    },
-    "Volvo": {
-      "n": 11,
-      "multiplier": 1.5556,
-      "p25": 1.45,
-      "p75": 1.639
-    },
-    "Volvo|2016-2019": {
-      "n": 5,
-      "multiplier": 1.5556,
-      "p25": 1.554,
-      "p75": 1.678
-    },
-    "Volvo|2020+": {
-      "n": 3,
-      "multiplier": 1.58,
-      "p25": 1.275,
-      "p75": 1.736
-    },
-    "DAF": {
-      "n": 7,
-      "multiplier": 2.239,
-      "p25": 2.0,
-      "p75": 2.684
-    },
-    "DAF|2016-2019": {
-      "n": 4,
-      "multiplier": 2.684,
-      "p25": 2.458,
-      "p75": 2.841
-    },
-    "Renault": {
-      "n": 5,
-      "multiplier": 1.9784,
-      "p25": 1.538,
-      "p75": 2.017
-    },
-    "Renault|2016-2019": {
-      "n": 4,
-      "multiplier": 1.9977,
-      "p25": 1.785,
-      "p75": 2.02
-    },
-    "IVECO": {
-      "n": 5,
-      "multiplier": 2.2565,
-      "p25": 2.03,
-      "p75": 2.567
-    },
-    "Ford": {
-      "n": 5,
-      "multiplier": 2.5876,
-      "p25": 2.405,
-      "p75": 2.865
-    },
-    "Ford|2016-2019": {
-      "n": 3,
-      "multiplier": 2.4045,
-      "p25": 1.829,
-      "p75": 2.759
-    },
-    "BMC": {
-      "n": 4,
-      "multiplier": 1.2921,
-      "p25": 1.186,
-      "p75": 1.417
-    },
-    "pre-2012": {
-      "n": 3,
-      "multiplier": 1.4283,
-      "p25": 1.142,
-      "p75": 1.594
+    "MAN|2020+": {
+      "n": 20,
+      "multiplier": 1.4592,
+      "p25": 1.34,
+      "p75": 1.623
     }
   }
 }

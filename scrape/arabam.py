@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 from selectolax.parser import HTMLParser
 
 import config
-from scrape import db
+from scrape import db, normalize
 
 log = logging.getLogger("arabam")
 
@@ -172,6 +172,103 @@ def parse_listings(html: str, category: str) -> list[dict]:
     return rows
 
 
+def _truthy(value) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value or "").strip().lower() == "true"
+
+
+def listings_from_handoff_manifest() -> list[dict]:
+    """Map validated Arabam handoff rows onto the existing listings schema."""
+    jsonl = config.ROOT / "data_handoff" / "arabam_metadata" / "manifest.jsonl"
+    csv_path = config.ROOT / "data_handoff" / "arabam_metadata" / "manifest.csv"
+    records: list[dict] = []
+    if jsonl.exists():
+        with jsonl.open(encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if line:
+                    records.append(json.loads(line))
+    elif csv_path.exists():
+        import csv
+
+        with csv_path.open(encoding="utf-8", newline="") as fh:
+            records = list(csv.DictReader(fh))
+    else:
+        return []
+
+    from pricing import fx
+
+    eur_try = float(fx.load_calibration().get("eur_try") or config.DEFAULT_EUR_TRY)
+    out: list[dict] = []
+    for raw in records:
+        if not _truthy(raw.get("price_label_usable")):
+            continue
+        try:
+            price_try = float(raw["price_try"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        listing_id = str(raw.get("listing_id") or "").strip()
+        if not listing_id:
+            continue
+        year = raw.get("year")
+        try:
+            year_i = int(year) if year not in (None, "") else None
+        except (TypeError, ValueError):
+            year_i = None
+        km = raw.get("mileage_km")
+        try:
+            km_i = int(float(km)) if km not in (None, "") else None
+        except (TypeError, ValueError):
+            km_i = None
+        category = raw.get("category") or ""
+        body = normalize.normalize_body_type(category) if category else None
+        if body == "other":
+            body = None
+        url = raw.get("listing_url") or raw.get("canonical_url") or ""
+        out.append(
+            {
+                "listing_id": f"ab-{listing_id}",
+                "source": raw.get("source") or "arabam",
+                "category": category or None,
+                "url": url,
+                "title": raw.get("title_raw") or "",
+                "make": raw.get("make") or "",
+                "model_family": raw.get("model") or "",
+                "model_variant": raw.get("variant") or "",
+                "body_type": body,
+                "year": year_i,
+                "km": km_i,
+                "condition_flag": raw.get("condition_status") or None,
+                "country": "Turkey",
+                "city": raw.get("location") or "",
+                "price_native": price_try,
+                "price_currency": raw.get("currency") or "TRY",
+                "price_try": price_try,
+                "price_eur": price_try / eur_try if eur_try else None,
+                "photo_count": raw.get("n_images") or 0,
+                "image_urls": raw.get("original_image_urls") or raw.get("images") or [],
+                "raw_props": {
+                    "listing_scope": raw.get("listing_scope"),
+                    "price_label_usable": True,
+                },
+                "scraped_at": raw.get("collected_at"),
+            }
+        )
+    return out
+
+
+def ingest_handoff_manifest() -> int:
+    rows = listings_from_handoff_manifest()
+    if not rows:
+        return 0
+    conn = db.connect()
+    try:
+        return db.upsert_listings(conn, rows)
+    finally:
+        conn.close()
+
+
 async def scrape(pages: int, headed: bool, targets: list[str], timeout_s: float) -> int:
     from playwright.async_api import async_playwright
 
@@ -251,11 +348,20 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--headed", action="store_true", help="show the browser (useful if a challenge appears)")
     ap.add_argument("--category", action="append", choices=sorted(TARGETS), help="repeatable")
     ap.add_argument("--timebox", type=float, default=900.0, help="hard limit in seconds")
+    ap.add_argument(
+        "--from-handoff",
+        action="store_true",
+        help="load validated data_handoff/arabam_metadata listings into SQLite",
+    )
     args = ap.parse_args(argv)
 
     logging.basicConfig(
         level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", stream=sys.stdout
     )
+    if args.from_handoff:
+        n = ingest_handoff_manifest()
+        log.info("DONE: %d validated Arabam listings stored", n)
+        return 0 if n else 1
     targets = args.category or ["cekici"]
     n = asyncio.run(scrape(args.pages, args.headed, targets, args.timebox))
     log.info("DONE: %d Turkish listings stored", n)

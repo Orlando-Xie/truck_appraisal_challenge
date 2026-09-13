@@ -148,8 +148,32 @@ def _thumb_for(conn, listing_id: str) -> str:
     return row["local_path"].replace("\\", "/") if row else ""
 
 
+def _eur_for_european_band(comp: Comparable) -> float | None:
+    """Comparable price in European-model EUR space.
+
+    Arabam rows are stored as TRY/EURTRY (FX only). That figure already contains
+    the Turkish market premium. Blending it into the European band and then
+    converting with turkiye_multiplier would count the premium twice.
+    """
+    if not comp.price_eur:
+        return None
+    source = (comp.source or "").lower()
+    from pricing.features import region_for
+
+    if source == "arabam" or region_for(comp.country) == "turkiye":
+        from pricing import fx as fx_mod
+
+        mult = float((fx_mod.load_calibration() or {}).get("turkiye_multiplier") or 1.0)
+        if mult > 0:
+            return float(comp.price_eur) / mult
+    return float(comp.price_eur)
+
+
 def find_comparables(spec: dict, limit: int = 8, exclude_holdout: bool = False) -> list[Comparable]:
-    conn = db.connect()
+    try:
+        conn = db.connect()
+    except Exception:
+        return []
     try:
         scored: list[tuple[float, list[str], dict]] = []
         for relax in range(4):
@@ -186,13 +210,15 @@ def find_comparables(spec: dict, limit: int = 8, exclude_holdout: bool = False) 
                 )
             )
         return out
+    except Exception:
+        return []
     finally:
         conn.close()
 
 
 def comp_price_stats(comps: list[Comparable]) -> dict:
     """A model-independent read on the market from the comparables themselves."""
-    prices = sorted(c.price_eur for c in comps if c.price_eur)
+    prices = sorted(p for p in (_eur_for_european_band(c) for c in comps) if p)
     if not prices:
         return {}
     n = len(prices)

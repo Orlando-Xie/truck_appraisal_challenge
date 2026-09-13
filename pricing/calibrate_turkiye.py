@@ -11,8 +11,10 @@ and, when a slice has at least three seeds, a make x age-band multiplier so a
 
 Sources, in preference order:
 
-1. arabam.com listings already in SQLite (from `python -m scrape.arabam`)
-2. `pricing/turkiye_manual.json`, a seed table of public asking prices
+1. validated Arabam metadata at `data_handoff/arabam_metadata/manifest.jsonl`
+   (CSV fallback), using only `price_label_usable == true` rows
+2. arabam.com listings already in SQLite (from `python -m scrape.arabam`)
+3. `pricing/turkiye_manual.json`, a seed table of public asking prices
 
 Usage::
 
@@ -21,10 +23,11 @@ Usage::
 
 from __future__ import annotations
 
+import csv
 import json
 import logging
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -36,7 +39,100 @@ from scrape import db, normalize
 log = logging.getLogger("calibrate")
 
 MANUAL_PATH = Path(__file__).with_name("turkiye_manual.json")
+ARABAM_MANIFEST_DIR = config.ROOT / "data_handoff" / "arabam_metadata"
+ARABAM_MANIFEST_JSONL = ARABAM_MANIFEST_DIR / "manifest.jsonl"
+ARABAM_MANIFEST_CSV = ARABAM_MANIFEST_DIR / "manifest.csv"
 MIN_SEGMENT_N = 3
+
+
+def _is_true(value) -> bool:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return False
+    return str(value).strip().lower() == "true"
+
+
+def _as_number(value, kind):
+    if value is None or value == "":
+        return None
+    try:
+        return kind(value)
+    except (TypeError, ValueError):
+        try:
+            return kind(float(value))
+        except (TypeError, ValueError):
+            return None
+
+
+def _map_arabam_record(raw: dict) -> dict | None:
+    """Map one validated Arabam listing onto the calibrator row schema.
+
+    Missing km / axle / euro / power are left unset. Category is passed through
+    as body_type so Çekici can canonicalise to tractor_unit without inventing
+    a body for other categories.
+    """
+    if not _is_true(raw.get("price_label_usable")):
+        return None
+    price_try = _as_number(raw.get("price_try"), float)
+    if price_try is None:
+        return None
+    year = _as_number(raw.get("year"), int)
+    km = _as_number(raw.get("mileage_km"), int)
+    return {
+        "make": raw.get("make"),
+        "model_family": raw.get("model"),
+        "model_variant": raw.get("variant"),
+        "year": year,
+        "km": km,
+        "price_try": price_try,
+        "body_type": raw.get("category") or raw.get("body_type"),
+        "source": raw.get("source") or "arabam",
+        "listing_id": raw.get("listing_id"),
+        "listing_url": raw.get("listing_url") or raw.get("canonical_url"),
+        "listing_scope": raw.get("listing_scope"),
+    }
+
+
+def _load_arabam_manifest_records() -> list[dict]:
+    if ARABAM_MANIFEST_JSONL.exists():
+        records = []
+        with ARABAM_MANIFEST_JSONL.open(encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                records.append(json.loads(line))
+        return records
+    if ARABAM_MANIFEST_CSV.exists():
+        with ARABAM_MANIFEST_CSV.open(encoding="utf-8", newline="") as fh:
+            return list(csv.DictReader(fh))
+    return []
+
+
+def _rows_from_arabam_manifest() -> tuple[list[dict], dict]:
+    records = _load_arabam_manifest_records()
+    stats = {
+        "manifest_rows": len(records),
+        "usable": 0,
+        "excluded_unusable_price": 0,
+        "excluded_unusable_reasons": Counter(),
+        "excluded_missing_price_try": 0,
+    }
+    rows: list[dict] = []
+    for raw in records:
+        if not _is_true(raw.get("price_label_usable")):
+            stats["excluded_unusable_price"] += 1
+            reason = raw.get("price_unusable_reason") or raw.get("listing_scope") or "price_label_usable!=true"
+            stats["excluded_unusable_reasons"][str(reason)] += 1
+            continue
+        mapped = _map_arabam_record(raw)
+        if mapped is None:
+            stats["excluded_missing_price_try"] += 1
+            continue
+        stats["usable"] += 1
+        rows.append(mapped)
+    return rows, stats
 
 
 def _rows_from_db() -> list[dict]:
@@ -150,10 +246,23 @@ def main() -> int:
         level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", stream=sys.stdout
     )
     eur_try = _eur_try()
-    db_rows = _rows_from_db()
+    manifest_rows, manifest_stats = _rows_from_arabam_manifest()
+    db_rows = _rows_from_db() if not manifest_rows else []
     manual_rows = _rows_from_manual()
 
-    if db_rows:
+    if manifest_rows:
+        source = "arabam_manifest"
+        rows = manifest_rows
+        log.info(
+            "using %d/%d validated arabam listings (price_label_usable=true); "
+            "excluded_unusable=%d reasons=%s missing_price_try=%d",
+            manifest_stats["usable"],
+            manifest_stats["manifest_rows"],
+            manifest_stats["excluded_unusable_price"],
+            dict(manifest_stats["excluded_unusable_reasons"]),
+            manifest_stats["excluded_missing_price_try"],
+        )
+    elif db_rows:
         source = "arabam"
         rows = db_rows
         log.info("using %d arabam listings", len(rows))
@@ -165,7 +274,19 @@ def main() -> int:
         log.error("no Turkish prices available")
         return 1
 
+    try:
+        predict.load_artifact()
+    except predict.ModelUnavailable as exc:
+        log.error("%s", exc)
+        return 1
+
     ratio_rows = _ratio_rows(rows, eur_try)
+    dropped = len(rows) - len(ratio_rows)
+    if dropped:
+        log.info(
+            "excluded %d mapped rows at scoring (model skip, non-positive midpoint, or ratio outside 0.4-4.0)",
+            dropped,
+        )
     if len(ratio_rows) < 8:
         log.error("only %d usable ratios; need at least 8", len(ratio_rows))
         return 1

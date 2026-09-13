@@ -234,10 +234,6 @@ class VisionClient:
             "response_schema": response_model,
             "max_output_tokens": 4096,
         }
-        try:
-            cfg_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
-        except Exception:
-            pass
         cfg = types.GenerateContentConfig(**cfg_kwargs)
         try:
             resp = self._gemini.models.generate_content(
@@ -245,7 +241,35 @@ class VisionClient:
             )
         except Exception as exc:
             msg = str(exc)
-            if "thinking" in msg.lower() and "thinking_config" in cfg_kwargs:
+            if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+                import time
+
+                time.sleep(6)
+                resp = self._gemini.models.generate_content(
+                    model=model, contents=[types.Content(role="user", parts=parts)], config=cfg
+                )
+            elif "404" in msg and "NOT_FOUND" in msg:
+                alts = [
+                    m
+                    for m in config.GEMINI_FLASH_CANDIDATES
+                    if m != model
+                ]
+                last = exc
+                for alt in alts[:4]:
+                    log.warning("Gemini model %s unavailable; retrying with %s", model, alt)
+                    try:
+                        resp = self._gemini.models.generate_content(
+                            model=alt, contents=[types.Content(role="user", parts=parts)], config=cfg
+                        )
+                        self.flash_model = alt
+                        self.pro_model = alt
+                        break
+                    except Exception as exc2:
+                        last = exc2
+                        continue
+                else:
+                    raise last
+            elif "thinking" in msg.lower() and "thinking_config" in cfg_kwargs:
                 cfg_kwargs.pop("thinking_config", None)
                 cfg = types.GenerateContentConfig(**cfg_kwargs)
                 resp = self._gemini.models.generate_content(
@@ -266,7 +290,41 @@ class VisionClient:
                     model=model, contents=[types.Content(role="user", parts=parts)], config=cfg
                 )
             else:
-                raise
+                if "INVALID_ARGUMENT" in msg or "invalid argument" in msg.lower():
+                    if "thinking_config" in cfg_kwargs:
+                        log.warning("Gemini rejected the request; retrying without thinking_config")
+                        cfg_kwargs.pop("thinking_config", None)
+                        cfg = types.GenerateContentConfig(**cfg_kwargs)
+                        try:
+                            resp = self._gemini.models.generate_content(
+                                model=model, contents=[types.Content(role="user", parts=parts)], config=cfg
+                            )
+                        except Exception as exc3:
+                            msg = str(exc3)
+                            if "schema" in msg.lower() or "INVALID_ARGUMENT" in msg:
+                                log.warning("Structured schema rejected (%s); retrying with prose schema", msg[:160])
+                                cfg = types.GenerateContentConfig(
+                                    temperature=temperature,
+                                    response_mime_type="application/json",
+                                    max_output_tokens=4096,
+                                )
+                                parts.append(
+                                    types.Part.from_text(
+                                        text="\nReturn JSON conforming exactly to this JSON Schema:\n"
+                                        + _schema_hint(response_model)
+                                    )
+                                )
+                                resp = self._gemini.models.generate_content(
+                                    model=model,
+                                    contents=[types.Content(role="user", parts=parts)],
+                                    config=cfg,
+                                )
+                            else:
+                                raise
+                    else:
+                        raise
+                else:
+                    raise
         text = getattr(resp, "text", None)
         if not text:
             raise VisionError("empty response from Gemini")

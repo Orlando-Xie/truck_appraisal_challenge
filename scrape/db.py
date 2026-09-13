@@ -111,6 +111,8 @@ def connect(path: Path | None = None) -> sqlite3.Connection:
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA synchronous=NORMAL")
+    # Always apply schema so a missing/empty DB cannot crash appraisal lookups.
+    conn.executescript(SCHEMA)
     return conn
 
 

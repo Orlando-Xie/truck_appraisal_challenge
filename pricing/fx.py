@@ -57,6 +57,7 @@ def load_calibration() -> dict:
                 "fitted_at": data.get("fitted_at", ""),
                 "notes": data.get("notes", ""),
                 "segments": data.get("segments") or {},
+                "use_segments": bool(data.get("use_segments", False)),
             }
         except Exception as exc:  # pragma: no cover
             log.warning("could not read calibration (%s); using defaults", exc)
@@ -71,6 +72,7 @@ def load_calibration() -> dict:
             "asking prices is being applied."
         ),
         "segments": {},
+        "use_segments": False,
     }
 
 
@@ -99,6 +101,9 @@ def multiplier_for(spec: dict | None, calibration: dict | None = None) -> float:
     """Segmented TRY premium: make|age-band, then make, then age-band, then global."""
     cal = calibration or load_calibration()
     global_m = float(cal.get("turkiye_multiplier") or config.DEFAULT_TURKIYE_MULTIPLIER)
+    # Demo-safe: ignore sparse make×age segments unless explicitly enabled.
+    if not cal.get("use_segments"):
+        return global_m
     segments = cal.get("segments") or {}
     if not spec or not segments:
         return global_m

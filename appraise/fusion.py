@@ -160,7 +160,10 @@ def resolve_year(ident: Identification | None, claims: SellerClaims | None) -> t
 
 def _corpus_median_year(make: str | None, family: str | None, lo: int, hi: int) -> int | None:
     """Median advertised year for this family inside a generation window."""
-    conn = db.connect()
+    try:
+        conn = db.connect()
+    except Exception:
+        return None
     try:
         def _query(use_family: bool) -> int | None:
             clauses = ["year > 1995", "price_eur > 0", "body_type != '_negative'", "year BETWEEN ? AND ?"]
@@ -181,13 +184,18 @@ def _corpus_median_year(make: str | None, family: str | None, lo: int, hi: int) 
             return years[len(years) // 2]
 
         return _query(True) or _query(False)
+    except Exception:
+        return None
     finally:
         conn.close()
 
 
 def _corpus_median_km(make: str | None, family: str | None, year: int | None) -> int | None:
     """Typical mileage for this kind of truck at this age, from the corpus."""
-    conn = db.connect()
+    try:
+        conn = db.connect()
+    except Exception:
+        return None
     try:
         clauses = ["km > 1000", "price_eur > 0", "body_type != '_negative'"]
         params: list = []
@@ -204,6 +212,8 @@ def _corpus_median_km(make: str | None, family: str | None, year: int | None) ->
         if len(kms) < 5:
             return None
         return int(kms[len(kms) // 2])
+    except Exception:
+        return None
     finally:
         conn.close()
 
