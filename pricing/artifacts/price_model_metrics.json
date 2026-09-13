@@ -1,0 +1,74 @@
+{
+  "features": [
+    "make_canon",
+    "family_canon",
+    "body_canon",
+    "axle_canon",
+    "condition_canon",
+    "region",
+    "age",
+    "log_km",
+    "power_hp_filled",
+    "euro_filled",
+    "has_power",
+    "has_euro",
+    "has_km"
+  ],
+  "categorical": [
+    "make_canon",
+    "family_canon",
+    "body_canon",
+    "axle_canon",
+    "condition_canon",
+    "region"
+  ],
+  "numeric": [
+    "age",
+    "log_km",
+    "power_hp_filled",
+    "euro_filled",
+    "has_power",
+    "has_euro",
+    "has_km"
+  ],
+  "interval_factor": 1.2500000000000004,
+  "residual_quantiles": {
+    "p50": 0.13897555738020342,
+    "p80": 0.35701315066704425,
+    "p90": 0.5303024689099176
+  },
+  "trained_at": "2026-09-12T22:43:31.407003+00:00",
+  "n_train": 4794,
+  "n_test": 1053,
+  "metrics_train": {
+    "n": 4794,
+    "median_ape": 0.0849045575867001,
+    "mean_ape": 0.19843914710689747,
+    "within_10pct": 0.5356695869837297,
+    "within_20pct": 0.7127659574468085,
+    "within_30pct": 0.8149770546516479,
+    "interval_coverage": 0.7911973299958281,
+    "median_interval_width_ratio": 0.6398193250516193,
+    "median_price_eur": 26950.0
+  },
+  "metrics_test": {
+    "n": 1053,
+    "median_ape": 0.13897555738020342,
+    "mean_ape": 0.26081136102242297,
+    "within_10pct": 0.4121557454890788,
+    "within_20pct": 0.6258309591642925,
+    "within_30pct": 0.7435897435897436,
+    "interval_coverage": 0.6942070275403609,
+    "median_interval_width_ratio": 0.624924865147434,
+    "median_price_eur": 27900.0
+  },
+  "price_median_eur": 27000.0,
+  "n_categories": {
+    "make_canon": 18,
+    "family_canon": 111,
+    "body_canon": 8,
+    "axle_canon": 11,
+    "condition_canon": 4,
+    "region": 5
+  }
+}

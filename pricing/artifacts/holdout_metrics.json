@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-09-12T23:36:54.033048+00:00",
+  "spec_oracle": {
+    "n": 130,
+    "median_ape": 0.16938476644088363,
+    "mean_ape": 1.0508410161341744,
+    "within_10pct": 0.3230769230769231,
+    "within_20pct": 0.5692307692307692,
+    "within_30pct": 0.7307692307692307,
+    "interval_coverage": 0.8153846153846154,
+    "median_interval_width_ratio": 0.7750712907557635,
+    "median_true_eur": 33900.0,
+    "median_pred_eur": 29013.533980588953
+  },
+  "photos_only": {},
+  "recalibration_factor": 1.0000000000000004,
+  "n_holdout": 130,
+  "oracle_sample": [
+    {
+      "listing_id": "al-21102619164525300300",
+      "true_eur": 55500.0,
+      "pred_mid": 14090,
+      "pred_low": 10357,
+      "pred_high": 35307,
+      "ape": 0.7461,
+      "inside": false
+    },
+    {
+      "listing_id": "al-22122817130208826200",
+      "true_eur": 13300.0,
+      "pred_mid": 10487,
+      "pred_low": 9281,
+      "pred_high": 21126,
+      "ape": 0.2115,
+      "inside": true
+    },
+    {
+      "listing_id": "al-23030709125776263800",
+      "true_eur": 12300.0,
+      "pred_mid": 8697,
+      "pred_low": 6073,
+      "pred_high": 13647,
+      "ape": 0.293,
+      "inside": true
+    },
+    {
+      "listing_id": "al-23052018521771379600",
+      "true_eur": 34900.0,
+      "pred_mid": 22290,
+      "pred_low": 11097,
+      "pred_high": 47758,
+      "ape": 0.3613,
+      "inside": true
+    },
+    {
+      "listing_id": "al-23072816545013658000",
+      "true_eur": 8314.0,
+      "pred_mid": 6341,
+      "pred_low": 4665,
+      "pred_high": 18085,
+      "ape": 0.2374,
+      "inside": true
+    },
+    {
+      "listing_id": "al-24062803204924051700",
+      "true_eur": 34900.0,
+      "pred_mid": 33096,
+      "pred_low": 15812,
+      "pred_high": 38969,
+      "ape": 0.0517,
+      "inside": true
+    },
+    {
+      "listing_id": "al-24122710192721934100",
+      "true_eur": 55500.0,
+      "pred_mid": 61812,
+      "pred_low": 57379,
+      "pred_high": 63545,
+      "ape": 0.1137,
+      "inside": false
+    },
+    {
+      "listing_id": "al-25021309494145850300",
+      "true_eur": 33900.0,
+      "pred_mid": 29359,
+      "pred_low": 13218,
+      "pred_high": 44235,
+      "ape": 0.1339,
+      "inside": true
+    },
+    {
+      "listing_id": "al-25022010053733192100",
+      "true_eur": 32240.0,
+      "pred_mid": 33492,
+      "pred_low": 11080,
+      "pred_high": 66441,
+      "ape": 0.0388,
+      "inside": true
+    },
+    {
+      "listing_id": "al-25032714595589310400",
+      "true_eur": 56500.0,
+      "pred_mid": 80889,
+      "pred_low": 34045,
+      "pred_high": 93422,
+      "ape": 0.4317,
+      "inside": true
+    },
+    {
+      "listing_id": "al-25040114482668537300",
+      "true_eur": 33900.0,
+      "pred_mid": 24249,
+      "pred_low": 23074,
+      "pred_high": 40676,
+      "ape": 0.2847,
+      "inside": true
+    },
+    {
+      "listing_id": "al-25070921592413590000",
+      "true_eur": 13300.0,
+      "pred_mid": 14960,
+      "pred_low": 11387,
+      "pred_high": 22141,
+      "ape": 0.1248,
+      "inside": true
+    }
+  ],
+  "photos_sample": []
+}

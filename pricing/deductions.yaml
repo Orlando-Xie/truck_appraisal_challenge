@@ -1,0 +1,306 @@
+# Condition rubric and repair-cost deduction table.
+#
+# This file is the single source of truth for two things:
+#   1. The inspection checklist the vision stage is asked to fill in (item ids
+#      and what to look for).
+#   2. The money that comes off the market baseline for each severity level.
+#
+# Amounts are EUR, benchmarked against European heavy-truck repair and parts
+# costs for a 4x2 tractor unit, then scaled by `class_scaling` for other body
+# types. They are deliberately readable so a truck person can argue with any
+# single line rather than with a black box.
+#
+# Sources for the ballpark figures: replacement steer tyre 315/70R22.5 approx
+# EUR 380-450 fitted, drive tyre approx EUR 330-400 fitted, cab respray panel
+# approx EUR 400-700, windscreen approx EUR 350-500 fitted, fifth wheel
+# replacement approx EUR 900-1400 fitted.
+
+version: 3
+currency: EUR
+
+# Deductions are capped so that no photo-only assessment can wipe out the
+# machine's value. A truck with everything wrong is still worth its parts.
+caps:
+  max_total_fraction_of_baseline: 0.35
+  max_single_item_fraction_of_baseline: 0.12
+
+# Body types other than a tractor unit have different repair exposure.
+class_scaling:
+  tractor_unit: 1.0
+  box: 1.0
+  curtainside: 1.0
+  tipper: 1.15
+  mixer: 1.2
+  tanker: 1.1
+  flatbed: 0.95
+  other: 1.0
+
+# ---------------------------------------------------------------------------
+# How condition turns into money.
+#
+# The price model is fitted on listing specifications only -- make, family, year,
+# mileage, power, region -- because that is all a listing corpus reliably
+# contains. Two trucks with an identical specification are advertised at very
+# different prices depending on how they have been looked after, which is why the
+# model's own interval for a specification is wide (around 80% of the midpoint).
+#
+# That width is not noise to be apologised for: it is the market's condition
+# spread, and locating the truck inside it is exactly what the photos are for.
+# So each rubric item has a `pricing_role`:
+#
+#   positioning - holistic "how well was this kept" signals. These decide where
+#                 in the specification's price band the truck sits. A tidy,
+#                 rust-free, straight example sits near the top; a scruffy,
+#                 patched, corroded one sits near the bottom.
+#   deduction   - discrete bills the buyer must pay on collection. These come off
+#                 the positioned price as itemised money.
+#
+# Splitting the two avoids double counting: a worn tyre is a quotable invoice, a
+# tired-looking cab is a market discount, and neither is charged twice.
+# ---------------------------------------------------------------------------
+positioning:
+  # Weight of each positioning item in the overall condition index.
+  weights:
+    cab_rust: 1.3
+    chassis_rust: 1.2
+    body_damage: 1.2
+    paint_and_repair_history: 1.0
+    cab_interior: 0.9
+  # How far a perfect or terrible condition index may move the truck within the
+  # specification's market band. 1.0 would allow the full q10-q90 span.
+  strength: 0.85
+  # Reported interval width as a fraction of the market band width, by how much
+  # of the rubric the photos actually supported. Good coverage earns a tighter
+  # answer; poor coverage keeps the full market spread.
+  width_by_evidence:
+    full: 0.45      # nearly every positioning item observable
+    good: 0.60
+    partial: 0.80
+    poor: 1.00      # almost nothing observable, so report the raw market spread
+  # Fraction of positioning items that must be observable for each tier.
+  evidence_tiers:
+    full: 0.85
+    good: 0.60
+    partial: 0.35
+
+# ---------------------------------------------------------------------------
+# Inspection rubric. Every item is shown to the vision model verbatim.
+# ---------------------------------------------------------------------------
+items:
+  - id: tires
+    pricing_role: deduction
+    label: Tyres
+    look_for: >
+      Tread depth on any visible tyre, uneven or feathered wear indicating
+      misalignment, mismatched brands or sizes across an axle, sidewall cracking
+      or bulges, retreaded casings, wheel rim damage.
+    requires_views: [tire_wheel, side, front_three_quarter]
+    # Tyres are costed dynamically from tread_remaining_pct in the tyre
+    # assessment; these severity amounts are the fallback when only a coarse
+    # judgement is available.
+    dynamic: tires
+    severity_eur:
+      minor: 350
+      moderate: 1200
+      severe: 2400
+
+  - id: cab_rust
+    pricing_role: positioning
+    label: Cab corrosion
+    look_for: >
+      Rust at cab corners, around the windscreen frame, along door bottoms, at
+      step boxes and around wheel arches. Distinguish surface staining from
+      blistering or perforation.
+    requires_views: [front_three_quarter, side, rear_three_quarter]
+    severity_eur:
+      minor: 300
+      moderate: 1400
+      severe: 3800
+
+  - id: chassis_rust
+    pricing_role: positioning
+    label: Chassis and frame corrosion
+    look_for: >
+      Scaling or flaking rust on the frame rails, crossmembers, suspension
+      mounts, fuel tank straps and air tank brackets.
+    requires_views: [side, chassis_underside]
+    severity_eur:
+      minor: 250
+      moderate: 1500
+      severe: 4500
+
+  - id: body_damage
+    pricing_role: positioning
+    label: Body and panel damage
+    look_for: >
+      Dents, creases, torn or missing panels, misaligned panel gaps, cracked
+      bumper or spoiler, damaged sun visor, missing side skirts or fairings.
+    requires_views: [front_three_quarter, side, rear_three_quarter]
+    severity_eur:
+      minor: 450
+      moderate: 2300
+      severe: 7500
+
+  - id: paint_and_repair_history
+    pricing_role: positioning
+    label: Paint and repair history
+    look_for: >
+      Colour mismatch between adjacent panels, overspray on trim or rubber,
+      orange-peel texture, masking lines, filler ripple visible in reflections.
+      These indicate previous accident repair.
+    requires_views: [front_three_quarter, side]
+    severity_eur:
+      minor: 300
+      moderate: 1600
+      severe: 5000
+
+  - id: glass_and_lights
+    pricing_role: deduction
+    label: Glass and lighting
+    look_for: >
+      Windscreen chips or cracks, missing or fogged headlamp units, cracked lamp
+      lenses, missing marker lights, broken mirrors or mirror arms.
+    requires_views: [front, front_three_quarter, rear]
+    severity_eur:
+      minor: 180
+      moderate: 700
+      severe: 1600
+
+  - id: cab_interior
+    pricing_role: positioning
+    label: Cab interior condition
+    look_for: >
+      Seat bolster collapse and tearing, cracked or missing dash trim, worn
+      steering wheel, damaged bunk, water staining on headliner, missing
+      panels, general filth versus normal use.
+    requires_views: [interior_cab, dashboard_odometer]
+    severity_eur:
+      minor: 250
+      moderate: 1100
+      severe: 2600
+
+  - id: warning_lights
+    pricing_role: deduction
+    label: Dashboard warning lights
+    look_for: >
+      Illuminated fault lamps on the instrument cluster with the ignition on:
+      engine, ABS, EBS, AdBlue or emissions, airbag, brake. Note which.
+    requires_views: [dashboard_odometer]
+    severity_eur:
+      minor: 400
+      moderate: 1800
+      severe: 5500
+
+  - id: fluid_leaks
+    pricing_role: deduction
+    label: Fluid leaks and engine bay
+    look_for: >
+      Wet oil film or drips on the sump, gearbox, hubs or steering box, coolant
+      staining, heavy oil-caked grime, fresh fluid pooling under the vehicle.
+    requires_views: [engine_bay, chassis_underside]
+    severity_eur:
+      minor: 350
+      moderate: 1700
+      severe: 4800
+
+  - id: fifth_wheel
+    pricing_role: deduction
+    label: Fifth wheel and coupling
+    look_for: >
+      Wear ring scoring on the coupling plate, jaw wear, missing grease,
+      distorted mounting, damaged catwalk plate, condition of air and electrical
+      lines to the trailer.
+    requires_views: [fifth_wheel, rear_three_quarter]
+    severity_eur:
+      minor: 200
+      moderate: 850
+      severe: 1900
+
+  - id: exhaust_and_emissions
+    pricing_role: deduction
+    label: Exhaust and emissions hardware
+    look_for: >
+      Missing or tampered AdBlue tank and lines, cut or bypassed SCR or DPF
+      canister, heavy soot deposits around the stack, aftermarket exhaust
+      rework. Emissions tampering is a resale and compliance problem.
+    requires_views: [side, chassis_underside, engine_bay]
+    severity_eur:
+      minor: 400
+      moderate: 2200
+      severe: 6000
+
+  - id: suspension_and_air
+    pricing_role: deduction
+    label: Suspension and air system
+    look_for: >
+      Collapsed or perished air bellows, leaking or corroded air lines, broken
+      leaf springs, sagging ride height on one corner, damaged shock absorbers.
+    requires_views: [side, chassis_underside, tire_wheel]
+    severity_eur:
+      minor: 300
+      moderate: 1400
+      severe: 3600
+
+# ---------------------------------------------------------------------------
+# Tyre costing, used when tread_remaining_pct is available.
+# ---------------------------------------------------------------------------
+tire_costing:
+  fitted_cost_eur_per_tire: 380
+  # Tyres are treated as consumed below this threshold; above it they carry
+  # proportional residual value.
+  replace_below_pct: 25
+  # Number of tyres assumed for each axle configuration.
+  tire_count_by_axle_config:
+    "4x2": 6
+    "6x2": 10
+    "6x4": 10
+    "8x4": 12
+    default: 6
+  penalties_eur:
+    uneven_wear: 450        # implies alignment or suspension work
+    mismatched: 250
+    sidewall_damage: 600
+    retread: 200
+
+# ---------------------------------------------------------------------------
+# Uncertainty widening. Missing evidence widens the interval rather than being
+# silently ignored -- this is what stops the system from sounding confident
+# about things it cannot see.
+# ---------------------------------------------------------------------------
+widening:
+  missing_view_pct:
+    front_three_quarter: 6.0
+    side: 5.0
+    tire_wheel: 4.0
+    dashboard_odometer: 7.0
+    interior_cab: 3.0
+    engine_bay: 4.0
+    fifth_wheel: 2.0
+  missing_view_reason:
+    front_three_quarter: "No clear front three-quarter view, so model identification and front-end damage rest on weaker evidence."
+    side: "No side profile, so axle configuration, chassis condition and body length are uncertain."
+    tire_wheel: "No tyre close-up, so tread depth is estimated coarsely and a full tyre set is a four-figure swing."
+    dashboard_odometer: "No odometer photo, so mileage is inferred from wear alone and mileage drives price more than any other single factor."
+    interior_cab: "No cab interior, so wear cross-checking of the claimed mileage is not possible."
+    engine_bay: "No engine bay view, so leaks and service condition are unassessed."
+    fifth_wheel: "No fifth wheel view, so coupling wear is unassessed."
+  # Other sources of uncertainty.
+  no_model_identified_pct: 18.0
+  no_variant_identified_pct: 7.0
+  no_year_pinned_pct: 12.0
+  unresolved_contradiction_pct: 10.0
+  thin_comparables_pct: 8.0
+  thin_comparables_threshold: 8
+  low_image_count_pct: 6.0
+  low_image_count_threshold: 3
+  max_total_widening_pct: 55.0
+
+# ---------------------------------------------------------------------------
+# Mileage credibility. Used by the odometer-versus-wear cross-check.
+# ---------------------------------------------------------------------------
+mileage_check:
+  # If wear-implied mileage exceeds the odometer by more than this fraction,
+  # flag it. Rollback is a real problem in this market.
+  discrepancy_flag_fraction: 0.45
+  # When mileage is not credible, price against the wear-implied figure too.
+  price_both_scenarios: true

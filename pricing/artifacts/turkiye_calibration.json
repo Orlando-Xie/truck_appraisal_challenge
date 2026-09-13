@@ -1,0 +1,8 @@
+{
+  "turkiye_multiplier": 1.989,
+  "eur_try": 47.5,
+  "n_listings": 40,
+  "source": "manual_seed",
+  "notes": "Fitted as the median of (Turkish asking price / EURTRY / European-model midpoint) on 40 listings. Quartiles 1.80\u20132.37. Source: manual_seed.",
+  "fitted_at": "2026-09-12T23:36:46.808254+00:00"
+}
