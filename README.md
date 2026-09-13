@@ -1,1 +1,190 @@
-‣桗瑡猧琠楨⁳牴捵⁫潷瑲㽨ਊ⁁獵摥琭畲正愠灰慲獩污映潲⁭桰瑯杯慲桰ⱳ戠極瑬映牯琠敨䬠浡潩⁮桃污敬杮⹥ਊ灕潬摡瀠潨潴⁳景愠琠畲正‮潙⁵敧⁴⁡牰捩⁥慲杮⁥湩吠牵楫桳氠物⁡湡⁤略潲‬੡潣摮瑩潩⁮敲潰瑲礠畯挠湡挠敨正愠慧湩瑳琠敨瀠硩汥ⱳ琠敨挠浯慰慲汢⁥楬瑳湩獧琠敨渊浵敢⁲獩戠獡摥漠Ɱ愠摮愠猠牴楡桧⁴湡睳牥愠潢瑵眠慨⁴桴⁥桰瑯獯挠畯摬渠瑯琠汥⹬ਊ⁁慬杮慵敧洠摯汥渠癥牥瀠潲畤散⁳桴⁥牰捩⹥吠慨⁴獩琠敨眠潨敬瀠楯瑮ਮ⌊‣桗⁹桴獩椠⁳潮⁴⁡桴湩眠慲灰牥ਊ桔⁥牢敩⁦獩攠灸楬楣㩴猠湥楤杮瀠潨潴⁳潴愠瘠獩潩⁮偁⁉湡⁤牰湩楴杮眠慨整敶ੲ畮扭牥挠浯獥戠捡⁫楷汬渠瑯眠湩‮桔⁥敤楳湧栠牥⁥獩琠敨漠灰獯瑩⁥景琠慨⹴ਊ⸱⨠吪敨瘠獩潩⁮潭敤⁬獩漠汮⁹獡敫⁤桷瑡椠⁴慣⁮敳⹥⨪䴠歡ⱥ朠湥牥瑡潩Ɱ爠獵ⱴ †牴慥Ɽ漠潤敭整⁲楤楧獴‮瑉椠⁳敮敶⁲獡敫⁤桷瑡愠祮桴湩⁧獩眠牯桴‬湡⁤瑩 †慣湮瑯椠癮湥⁴⁡慲杮⁥潴猠畯摮挠湯楦敤瑮ਮ⸲⨠吪敨瀠楲散挠浯獥映潲⁭⁡瑳瑡獩楴慣⁬潭敤⩬‪牴楡敮⁤湯㔠㠬㜴爠慥⁬楬瑳湩獧 †捳慲数⁤牦浯䄠瑵汯湩⁥㠨㔬㤱氠獩楴杮⁳潣汬捥整Ɽ㜠ㄬ㈸瀠楲散⥤‮桔敲੥†朠慲楤湥⵴潢獯整⁤畱湡楴敬爠来敲獳牯⁳焨〱⼠焠〵⼠焠〹 牡⁥楦瑴摥漠⁮潬੧†愠歳湩⁧牰捩⁥湩攠牵⹯吠敨椠瑮牥慶⁬獩琠敨漠獢牥敶⁤灳敲摡漠⁦桴⁥慭歲瑥愠ੴ†琠慨⁴灳捥晩捩瑡潩Ɱ琠敨⁮慣楬牢瑡摥猠⁯桴瑡愠潢瑵㠠┰漠⁦敨摬漭瑵愠歳湩੧†瀠楲散⁳慦汬椠獮摩⁥瑩ਮ⸳⨠䌪湯楤楴湯氠捯瑡獥琠敨琠畲正椠獮摩⁥桴瑡戠湡⩤Ⱚ爠瑡敨⁲桴湡猠慨楶杮愠੮†椠癮湥整⁤浡畯瑮漠晦愠瀠楯瑮攠瑳浩瑡⹥䤠敤瑮捩污祬猠数楣楦摥琠畲正⁳牡੥†愠癤牥楴敳⁤瑡瘠牥⁹楤晦牥湥⁴牰捩獥搠灥湥楤杮漠⁮潨⁷桴祥眠牥⁥敫瑰※桴੥†挠牯異⁳慣湮瑯猠敥挠湯楤楴湯‬桴⁥桰瑯獯挠湡‮畒牢捩椠整獭琠慨⁴敤捳楲敢 †癯牥污⁬灵敫灥⠠畲瑳‬潢祤‬慰湩ⱴ挠扡椠瑮牥潩⥲洠癯⁥桴⁥牴捵⁫灵漠⁲潤湷 †桴⁥慢摮‮楄捳敲整爠灥楡⁲楢汬⁳琨特獥‬汧獡ⱳ眠牡楮杮氠杩瑨ⱳ氠慥獫 牡੥†椠整業敳⁤牦浯怠牰捩湩⽧敤畤瑣潩獮礮浡恬愠摮琠歡湥漠晦愠瑦牥慷摲⹳㐊‮⨪敒畦楳杮椠⁳⁡楦獲⵴汣獡⁳畯灴瑵⨮‪⁁楮桧⵴楴敭戠畬Ⱳ愠洠瑯牯祣汣ⱥ愠 †牴楡敬⁲楷桴渠⁯牴捡潴Ⱳ愠㘠쌰㒗‰桴浵湢楡㩬攠捡⁨獩爠橥捥整⁤楷桴愠洠慥畳敲੤†爠慥潳⁮湡⁤⁡敲畱獥⁴潦⁲桴⁥桰瑯獯琠慨⁴潷汵⁤捡畴污祬栠汥⹰䄠挠湯楦敤瑮 †牰捩⁥湯琠敨眠潲杮猠扵敪瑣椠⁳潷獲⁥桴湡渠⁯牰捩⹥ਊ⌣䴠慥畳敲⁤捡畣慲祣ਊ湏⨠ㄪ〳氠獩楴杮⁳敨摬漠瑵戠晥牯⁥牴楡楮杮⨪‬牰捩摥映潲⁭桴楥⁲睯⁮灳捥晩捩瑡潩㩮ਊ⁼⁼੼⵼ⴭ⵼ⴭ੼⁼敍楤湡愠獢汯瑵⁥数捲湥慴敧攠牲牯簠⨠ㄪ⸶┹⨪簠簊圠瑩楨⁮〲‥景愠歳湩⁧牰捩⁥⁼⨪㜵⨥‪੼⁼獁楫杮瀠楲散椠獮摩⁥桴⁥敲潰瑲摥椠瑮牥慶⁬⁼⨪㈸⨥‪੼⁼敒慣楬牢瑡潩⁮敮摥摥簠渠湯⁥愨牬慥祤愠⁴〸⬥ ੼伊⁮桴⁥慲摮浯琠獥⁴灳楬⁴獵摥眠楨敬映瑩楴杮⠠ⰱ㔰″楬瑳湩獧㨩洠摥慩⁮牥潲⁲⨪㌱㤮⨥Ⱚ㘊┳眠瑩楨⁮〲⸥吠敨栠汯潤瑵椠⁳汳杩瑨祬栠牡敤⁲敢慣獵⁥瑩眠獡挠潨敳⁮潴猠慰⁮桴੥牰捩⁥慲杮⁥湡⁤潴栠癡⁥湥畯桧瀠潨潴⁳潦⁲⁡慬整⁲桰瑯獯漭汮⁹癥污ਮ䄊歳湩⁧牰捩⁥獩渠瑯琠慲獮捡楴湯瀠楲散‬潳愠瀠牥敦瑣洠摯汥眠畯摬猠楴汬栠癡੥敲楳畤污攠牲牯‮桔⁥湩整癲污椠⁳慣楬牢瑡摥愠慧湩瑳琠慨⁴敲楳畤污‬桷捩⁨獩眠票椊⁴獩眠摩ⱥ愠摮眠票琠敨瀠潨潴⁳牡⁥桴湥甠敳⁤潴瀠慬散愠猠数楣楦⁣牴捵⁫湩楳敤椊⹴ਊ獁楫杮瀠楲散椠⁳潮⁴牴湡慳瑣潩⁮牰捩ⱥ猠⁯⁡数晲捥⁴潭敤⁬潷汵⁤瑳汩⁬慨敶爊獥摩慵⁬牥潲⹲吠敨椠瑮牥慶⁬獩挠污扩慲整⁤条楡獮⁴桴瑡爠獥摩慵ⱬ眠楨档椠⁳桷੹瑩椠⁳楷敤‬湡⁤桷⁹桴⁥桰瑯獯愠敲琠敨⁮獵摥琠⁯汰捡⁥⁡灳捥晩捩琠畲正椠獮摩੥瑩ਮ刊ⵥ畲㩮ਊ恠੠祰桴湯ⴠ⁭癥污栮汯潤瑵瀊瑹潨⁮洭攠慶⹬潨摬畯⁴ⴭ桰瑯獯†⌠映汵⁬楰数楬敮‬敮摥⁳⁡楶楳湯䄠䥐欠祥怊恠ਊ桔⁥牷瑩ⵥ灵椠⁳湩怠癥污爯灥牯⹴摭⹠ਊ⌣䠠睯愠⁮灡牰楡慳⁬捡畴污祬爠湵ੳ怊恠瀊潨潴ੳ†铢ં†铢肔氠捯污焠慵楬祴⠠灏湥噃›汢牵‬硥潰畳敲‬敲潳畬楴湯 ††牦敥‬潮䄠䥐 鲔铢₀数⵲浩条⁥牴慩敧⠠桷瑡椠⁳桴獩愠瀠潨潴漠㽦 †††††挠湯畣牲湥ੴ†铢肔朠瑡獥›敲畦敳椠⁦湵獵扡敬⼠渠瑯愠琠畲正⼠搠瑥楡獬漠汮੹†铢肔椠敤瑮晩捩瑡潩⁮邔 鲔铢₀潣摮瑩潩⁮畲牢捩铢₤挠湯畣牲湥ⱴ倠潲琭敩ੲ†铢肔瀠牥散瑰慵⵬慨桳洠瑡档愠慧湩瑳琠敨挠牯異ੳ†铢肔挠浯慰慲汢⁥敲牴敩慶੬†铢肔洠牡敫⁴慢摮映潲⁭桴⁥畱湡楴敬洠摯汥 鲔铢₀楷敤⁮潦⁲桷瑡挠畯摬渠瑯戠⁥獥慴汢獩敨੤†铢肔瀠獯瑩潩⁮湩楳敤琠敨戠湡⁤牦浯瘠獩扩敬挠湯楤楴湯 钔铢₀畳瑢慲瑣椠整業敳⁤敲慰物戠汩獬‬潣癮牥⁴潴吠奒怊恠ਊ敓汬牥琭灹摥礠慥⁲ 慭敫⼠欠⁭牡⁥牴慥整⁤獡愠⁮湵敶楲楦摥挠慬浩‮晉琠敨瘠獩慵੬敧敮慲楴湯搠獩条敲獥眠瑩⁨桴⁥祴数⁤敹牡‬牯琠敨椠瑮牥潩⁲敷牡搠獩条敲獥眠瑩੨桴⁥摯浯瑥牥‬潢桴爠慥楤杮⁳牡⁥敲潰瑲摥愠摮‬桷湥椠⁴獩洠瑡牥慩ⱬ戠瑯⁨牡੥牰捩摥ਮ⌊‣畔歲獩⁨楬慲ਊ桔⁥潭敤⁬獩映瑩整⁤湩攠牵⁯敢慣獵⁥桴瑡椠⁳桷牥⁥桴⁥慤慴瘠汯浵⁥獩‮潃癮牥楳湯椊⁳睴⁯硥汰捩瑩映捡潴獲‬潢桴猠潨湷椠⁮桴⁥敲畳瑬਺怊恠瀊楲散呟奒㴠瀠楲散䕟剕쌠ₗ썔犼楫敹浟汵楴汰敩⁲韃䔠剕剔ਖ਼恠੠吊敨洠汵楴汰敩⁲獩映瑩整⁤祢怠祰桴湯ⴠ⁭牰捩湩⹧慣楬牢瑡彥畴歲祩恥映潲⁭畔歲獩੨獡楫杮瀠楲散⁳愨慲慢⹭潣⁭晩琠敨猠牣灡⁥敧獴琠牨畯桧䌠潬摵汦牡ⱥ漠桴牥楷敳愠猊敥⁤慴汢⁥景瀠扵楬⁣ꟃ步捩⁩牰捩獥椠⁮灠楲楣杮琯牵楫敹浟湡慵⹬獪湯⥠‮瑉椠⁳੡慭歲瑥瀠敲業浵‬潮⁴⁡畦杤㩥椠灭牯⁴畤祴‬雃噔‬䑋⁖湡⁤桴湩敮⁲畳灰祬漠⁦汣慥੮獵摥琠慲瑣牯⁳污⁬異桳吠牵楫桳愠歳湩⁧牰捩獥愠潢敶䔠牵灯慥⁮湯獥映牯琠敨猠浡੥牴捵⹫ਊ⌣删湵楮杮椠ੴ倊瑹潨⁮⸳ㄱⰫ丠摯⁥〲⸫ਊ恠੠祰桴湯ⴠ⁭敶癮⸠敶癮⸊敶癮卜牣灩獴慜瑣癩瑡⁥††††⌠圠湩潤獷瀊灩椠獮慴汬ⴠ⁲敲畱物浥湥獴琮瑸挊灯⁹攮癮攮慸灭敬⸠湥⁶††††⌠琠敨⁮異⁴⁡䕇䥍䥎䅟䥐䭟奅椠⁮瑩瀊瑹潨⁮洭瀠楲楣杮琮慲湩††††⌠椠⁦潹⁵敲猭牣灡摥瀊瑹潨⁮洭瀠楲楣杮挮污扩慲整瑟牵楫敹ਊ摣眠扥☠…灮⁭湩瑳污⁬☦渠浰爠湵戠極摬☠…摣⸠ਮ祰桴湯ⴠ⁭癵捩牯⁮灡⹩慭湩愺灰ⴠ爭汥慯⁤ⴭ潰瑲㠠〰ਰ恠੠伊数⁮瑨灴⼺ㄯ㜲〮〮ㄮ㠺〰⸰圠瑩潨瑵愠瘠獩潩⁮敫⁹桴⁥楰数楬敮‬桴⁥慧整ⱳ琠敨瀊楲楣杮愠摮琠敨唠⁉污⁬瑳汩⁬畲㭮椠敤瑮晩捩瑡潩⁮湡⁤潣摮瑩潩⁮牡⁥慭歲摥愠ੳ祳瑮敨楴⁣潳渠扯摯⁹獩洠獩敬⹤儠慵楬祴戭獡摥爠晥獵污⁳搨牡Ⱬ戠畬Ⱳ琠湩⥹眠牯੫楷桴畯⁴⁡敫⹹匠扵敪瑣爠晥獵污⁳洨瑯牯祣汣ⱥ琠慲汩牥 敮摥愠爠慥⁬楶楳湯洠摯汥ਮ吊敨漠敮挭楬正挠獡獥漠⁮桴⁥潨敭瀠条⁥潣敶⁲⁡潭敤湲琠慲瑣牯‬⁡楨桧洭汩慥敧漊摬牥漠敮‬⁡楴灰牥‬⁡敳汬牥眠潨敳琠灹摥搠瑥楡獬愠敲眠潲杮‬⁡潭潴捲捹敬‬੡牴楡敬Ⱳ愠搠牡⁫汢牵‬湡⁤⁡捳敲湥桳瑯漠⁦湡愠癤牥⹴ਊ牡扡浡挮浯猠瑩⁳敢楨摮䌠潬摵汦牡⹥䠠慥汤獥⁳汐祡牷杩瑨椠⁳汢捯敫㭤爠湵怊祰桴湯ⴠ⁭捳慲数愮慲慢⁭ⴭ敨摡摥⁠湡⁤潣灭敬整琠敨挠慨汬湥敧椠⁦潹⁵慷瑮氠癩੥畔歲獩⁨楬瑳湩獧‮瑏敨睲獩⁥桴⁥敳摥琠扡敬椠⁮灠楲楣杮琯牵楫敹浟湡慵⹬獪湯⁠獩攊潮杵⁨潴映瑩琠敨猠湩汧⁥慭歲瑥洠汵楴汰敩⁲挨牵敲瑮祬쌠㆗㤮⤹ਮ⌊‣畓浢瑩楴杮ਊ桔⁥档污敬杮⁥慷瑮⁳⁡敲潰氠湩⁫湡⁤⁡ⴴ業畮整猠牣敥⁮敲潣摲湩⁧潴嬊慨正歀浡潩⹮潣⡝慭汩潴栺捡䁫慫業湯挮⥯ਮㄊ‮畐⁴⁡敇業楮欠祥椠⁮⹠湥恶愠摮爠獥慴瑲琠敨䄠䥐‬潳琠敨氠癩⁥敤潭椠敤瑮晩敩ੳ†爠慥⁬牴捵獫爠瑡敨⁲桴湡琠敨猠畴⹢㈊‮敒潣摲映畯⁲業畮整⁳潣敶楲杮›⁡敲污琠慲瑣牯愠灰慲獩污眠瑩⁨桴⁥牡瑩浨瑥捩 †桳睯Ɱ愠洠瑯牯祣汣⁥牯戠畬⁲敢湩⁧敲畦敳Ɽ愠摮漠敮琠灹摥搭瑥楡⁬潣瑮慲楤瑣潩⹮㌊‮畐桳琠敨爠灥⁯氨慥敶怠慤慴椯慭敧恳愠摮琠敨匠䱑瑩⁥楦敬漠瑵钀琠敨⁹牡⁥湩 †⹠楧楴湧牯恥※番杤獥挠湡爠ⵥ捳慲数‬牯礠畯挠湡愠瑴捡⁨⁡湳灡桳瑯猠灥牡瑡汥⥹ਮ⸴匠湥⁤桴⁥敲潰唠䱒愠摮琠敨爠捥牯楤杮ਮ⌊‣潃汬捥楴杮洠牯⁥慤慴ਊ恠੠祰桴湯ⴠ⁭捳慲数愮瑵汯湩⁥ⴭ污⁬ⴭ慰敧⁳㔱ਰ祰桴湯ⴠ⁭捳慲数椮慭敧⁳ⴭ慭⵸数⵲楬瑳湩⁧″ⴭ摥敧㐠〲ⴠ氭浩瑩㜠〵ਰ祰桴湯ⴠ⁭捳慲数愮慲慢⁭ⴭ慰敧⁳‸ⴭ敨摡摥††⌠㤠ⴰ業畮整戠硯‬汃畯晤慬敲札瑡摥瀊瑹潨⁮洭瀠楲楣杮琮慲湩ⴠ栭汯潤瑵ㄠ〳瀊瑹潨⁮洭瀠楲楣杮挮污扩慲整瑟牵楫敹怊恠ਊ敂瀠汯瑩㩥䄠瑵汯湩⁥獩猠牣灡摥愠⁴ㅾ爠煥敵瑳猯捥湯⹤愠慲慢⹭潣⁭獩倠慬睹楲桧ੴ敢慣獵⁥桴⁥楳整猠瑩⁳敢楨摮䌠潬摵汦牡㭥椠⁦瑩映楡獬‬桴⁥慭畮污猠敥⁤慴汢⁥獩攊潮杵⁨潴映瑩琠敨猠湩汧⁥畭瑬灩楬牥ਮ⌊‣敒潰氠祡畯ੴ怊恠猊牣灡⽥†††䄠瑵汯湩⁥‫牡扡浡猠牣灡牥ⱳ匠䱑瑩ⱥ椠慭敧搠睯汮慯Ɽ渠牯慭楬慳楴湯瀊楲楣杮 ††映慥畴敲ⱳ焠慵瑮汩⁥潭敤ⱬ搠摥捵楴湯⹳慹汭‬썔犼楫敹挠污扩慲楴湯瘊獩潩⽮†††猠档浥獡‬牰癯摩牥挠楬湥ⱴ焠慵楬祴‬牴慩敧⼠椠敤瑮晩⁹ 潣摮瑩潩੮灡牰楡敳 ††慧整ⱳ映獵潩Ɱ瀠牥散瑰慵⵬慨桳搠摥灵ⱥ漠捲敨瑳慲潴ੲ灡⽩†††††慆瑳偁ⱉ匠䕓瀠潲牧獥ⱳ猠浡汰⁥慣敳ੳ敷⽢†††††敒捡⁴敲畳瑬挠牡੤癥污 ††††潨摬畯⁴癥污慵楴湯搊瑡⽡††††氠獩楴杮⹳扤‬浩条獥‬慳灭敬⁳⠠潮⁴湩朠瑩਩恠੠⌊‣桗瑡琠楨⁳獩渠瑯ਊ瑉椠⁳潮⁴湡椠獮数瑣潩⹮䄠祮桴湩⁧敭档湡捩污‬瑳畲瑣牵污漠⁲潤畣敭瑮牡⁹敮摥⁳੡桰獹捩污挠敨正‮桔⁥畮扭牥椠⁳獡楫杮瀭楲散朠極慤据⁥牦浯瀠潨潴牧灡獨‬楷桴琠敨朊灡⁳瑳瑡摥爠瑡敨⁲桴湡猠潭瑯敨⁤癯牥ਮ# truck_appraisal_challenge
+# What's this truck worth?
+
+A used-truck appraisal from photographs, built for the Kamion Challenge.
+
+Upload photos of a truck. You get a price range in Turkish lira and euro, a
+condition report you can check against the pixels, the comparable listings the
+number is based on, and a straight answer about what the photos could not tell.
+
+A language model never produces the price. That is the whole point.
+
+## Why this is not a thin wrapper
+
+The brief is explicit: sending photos to a vision API and printing whatever
+number comes back will not win. The design here is the opposite of that.
+
+1. **The vision model is only asked what it can see.** Make, generation, rust,
+   tread, odometer digits. It is never asked what anything is worth, and it
+   cannot invent a range to sound confident. Gemini Flash does a cheap second
+   pass on a grille crop and a dashboard crop when those views exist.
+2. **The price comes from a statistical model** trained on thousands of real
+   Autoline listings. Three gradient-boosted quantile regressors (q10 / q50 /
+   q90) are fitted on log asking price in euro. The interval is the observed
+   spread of the market at that specification, then calibrated so that about
+   80% of held-out asking prices fall inside it.
+3. **Condition locates the truck inside that band**, rather than shaving an
+   invented amount off a point estimate. Identically specified trucks are
+   advertised at very different prices depending on how they were kept; the
+   corpus cannot see condition, the photos can. Rubric items that describe
+   overall upkeep (rust, body, paint, cab interior) move the truck up or down
+   the band. Discrete repair bills (tyres, glass, warning lights, leaks) are
+   itemised from `pricing/deductions.yaml` and taken off afterwards.
+4. **Refusing is a first-class output.** A night-time blur, a motorcycle, a
+   trailer with no tractor, a 60x40 thumbnail: each is rejected with a measured
+   reason and a request for the photos that would actually help. A confident
+   price on the wrong subject is worse than no price.
+
+## Measured accuracy
+
+Two numbers, kept separate on purpose. Full write-up: `eval/report.md`.
+
+**Spec-oracle** — 119 holdout listings priced from their own year / make / km
+(placeholder ads under EUR 5,000 excluded). This is the statistical model when
+identification is perfect.
+
+| | |
+|---|---|
+| Median absolute percentage error | **13.4%** |
+| Within 20% of asking price | **62%** |
+| Asking price inside the reported interval | **79%** |
+| Median interval width | **74%** of the midpoint |
+
+Tractors sit at 12% median error, tippers at 6%. Sparse bodies and missing
+power are worse. On the random test split used while fitting (1,020 listings):
+median error **14.7%**.
+
+**Photos-only** — 20 holdout listings, photos and nothing else. This is the
+challenge as written.
+
+| | |
+|---|---|
+| Median absolute percentage error | **48.2%** |
+| Within 20% of asking price | **25%** |
+| Make match rate | **100%** |
+| Median \|year error\| | **4 years** |
+| Median mileage APE (when both present) | **41%** |
+
+Year and odometer, not make, are the live-demo bottleneck. Asking price is not
+transaction price, so a perfect model would still have residual error. The
+interval is calibrated against that residual, which is why it is wide, and why
+the photos are then used to place a specific truck inside it.
+
+Re-run:
+
+```
+python -m eval.holdout
+python -m eval.holdout --photos --photos-limit 20
+```
+
+## How an appraisal actually runs
+
+```
+photos
+  |
+  |- local quality (OpenCV: blur, exposure, resolution)     free, no API
+  |- per-image triage (what is this a photo of?)            concurrent
+  |- gates: refuse if unusable / not a truck / details only
+  |- identification + condition rubric                      Flash, concurrent
+  |- grille / odometer crop pass                            Flash, if those views exist
+  |- perceptual-hash match against the corpus
+  |- comparable retrieval
+  |- market band from the quantile model
+  |- widen for what could not be established
+  |- position inside the band from visible condition
+  `- subtract itemised repair bills, convert to TRY
+```
+
+Seller-typed year / make / km are treated as an unverified claim. If the visual
+generation disagrees with the typed year, or the interior wear disagrees with
+the odometer, both readings are reported and, when it is material, both are
+priced.
+
+## Turkish lira
+
+The model is fitted in euro because that is where the data volume is. Conversion
+is two explicit factors, both shown in the result:
+
+```
+price_TRY = price_EUR x turkiye_multiplier x EURTRY
+```
+
+The global multiplier is currently **x1.79** (EURTRY 47.5), fitted from 70
+public Turkish asking prices, with make x age-band segments when a slice has
+at least three seeds (BMC is lower, Ford F-MAX is higher). Recalibrate with
+`python -m pricing.calibrate_turkiye`. It is a market premium, not a fudge:
+import duty, OTV, KDV and thinner supply of clean used tractors all push
+Turkish asking prices above European ones for the same truck.
+
+arabam.com sits behind Cloudflare. Headless Playwright is blocked; run
+`python -m scrape.arabam --headed` and complete the challenge if you want live
+Turkish listings. Otherwise `pricing/turkiye_manual.json` is enough.
+
+## Running it
+
+Python 3.11+, Node 20+.
+
+```
+python -m venv .venv
+.venv\Scripts\activate          # Windows
+pip install -r requirements.txt
+copy .env.example .env          # then put a GEMINI_API_KEY in it
+python -m pricing.train --no-remark-holdout
+python -m pricing.calibrate_turkiye
+
+cd web && npm install && npm run build && cd ..
+python -m uvicorn api.main:app --reload --port 8000
+```
+
+Open http://127.0.0.1:8000. Without a vision key the pipeline, the gates, the
+pricing and the UI all still run; identification and condition are marked as
+synthetic so nobody is misled. Quality-based refusals (dark, blur, tiny) work
+without a key. Subject refusals (motorcycle, trailer) need a real vision model.
+
+The one-click cases on the home page cover a modern tractor, a high-mileage
+older one, a tipper, a seller whose typed details are wrong, a motorcycle, a
+trailer, a dark blur, and a screenshot of an advert.
+
+## Submitting
+
+The challenge wants a repo link and a 4-minute screen recording to
+[hack@kamion.co](mailto:hack@kamion.co).
+
+1. Put a Gemini key in `.env` and restart the API, so the live demo identifies
+   real trucks rather than the stub.
+2. Record four minutes covering: a real tractor appraisal with the arithmetic
+   shown, a motorcycle or blur being refused, and one typed-detail contradiction.
+3. Push the repo (leave `data/images` and the SQLite file out — they are in
+   `.gitignore`; judges can re-scrape, or you can attach a snapshot separately).
+4. Send the repo URL and the recording.
+
+## Collecting more data
+
+```
+python -m scrape.autoline --all --pages 150
+python -m scrape.images --max-per-listing 3 --edge 420 --limit 7500
+python -m scrape.arabam --pages 8 --headed
+python -m pricing.train --holdout 130
+python -m pricing.calibrate_turkiye
+```
+
+Be polite: Autoline is scraped at ~1 request/second. Extra European ads barely
+move accuracy; Turkish asking prices and sparse body/make slices do.
+
+## Repo layout
+
+```
+scrape/       Autoline + arabam scrapers, SQLite, image download, normalisation
+pricing/      features, quantile model, deductions.yaml, Turkiye calibration
+vision/       schemas, provider client, quality, triage / identify / condition
+appraise/     gates, fusion, perceptual-hash dedupe, orchestrator
+api/          FastAPI, SSE progress, sample cases
+web/          React result card
+eval/         holdout evaluation
+data/         listings.db, images, samples  (not in git)
+```
+
+## What this is not
+
+It is not an inspection. Anything mechanical, structural or documentary needs a
+physical check. The number is asking-price guidance from photographs, with the
+gaps stated rather than smoothed over.
