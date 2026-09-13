@@ -204,8 +204,10 @@ def comp_price_stats(comps: list[Comparable]) -> dict:
         lo, hi = int(math.floor(idx)), int(math.ceil(idx))
         return prices[lo] + (prices[hi] - prices[lo]) * (idx - lo)
 
+    sims = [c.similarity for c in comps if getattr(c, "similarity", None) is not None]
     return {
         "n": n,
+        "median_similarity": round(float(sorted(sims)[len(sims) // 2]), 3) if sims else 0.0,
         "min_eur": prices[0],
         "p25_eur": round(q(0.25)),
         "median_eur": round(q(0.50)),

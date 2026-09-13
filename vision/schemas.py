@@ -165,6 +165,32 @@ class Identification(BaseModel):
     alternative_hypotheses: list[AltHypothesis] = Field(default_factory=list)
     same_vehicle_in_all_photos: bool = True
     distinct_vehicle_count: int = Field(1, description="How many different vehicles appear across the photo set.")
+    odometer_reading_km: int = Field(
+        0, description="Digits read from a dashboard crop during identification. 0 if not read."
+    )
+
+
+class BadgeRead(BaseModel):
+    """Second-pass read of a grille / badge crop."""
+
+    make: str = ""
+    model_family: str = ""
+    model_variant: str = ""
+    generation: str = ""
+    generation_year_low: int = 0
+    generation_year_high: int = 0
+    estimated_power_hp: int = 0
+    euro_class: str = ""
+    evidence: str = ""
+
+
+class OdometerRead(BaseModel):
+    """Second-pass read of a dashboard cluster crop."""
+
+    digits_visible: bool = False
+    reading_km: int = 0
+    confidence: float = Field(0.0, ge=0.0, le=1.0)
+    notes: str = ""
 
 
 # ---------------------------------------------------------------------------

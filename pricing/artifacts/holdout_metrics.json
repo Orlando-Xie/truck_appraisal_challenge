@@ -1,129 +1,697 @@
 {
-  "generated_at": "2026-09-12T23:36:54.033048+00:00",
+  "generated_at": "2026-09-13T01:21:54.603769+00:00",
   "spec_oracle": {
-    "n": 130,
-    "median_ape": 0.16938476644088363,
-    "mean_ape": 1.0508410161341744,
-    "within_10pct": 0.3230769230769231,
-    "within_20pct": 0.5692307692307692,
-    "within_30pct": 0.7307692307692307,
-    "interval_coverage": 0.8153846153846154,
-    "median_interval_width_ratio": 0.7750712907557635,
-    "median_true_eur": 33900.0,
-    "median_pred_eur": 29013.533980588953
+    "n": 119,
+    "median_ape": 0.13411007290401455,
+    "mean_ape": 0.22212653744859537,
+    "within_10pct": 0.3949579831932773,
+    "within_20pct": 0.6218487394957983,
+    "within_30pct": 0.7647058823529411,
+    "interval_coverage": 0.7899159663865546,
+    "median_interval_width_ratio": 0.7418948307318914,
+    "median_true_eur": 34900.0,
+    "median_pred_eur": 32224.54156619892
   },
-  "photos_only": {},
-  "recalibration_factor": 1.0000000000000004,
-  "n_holdout": 130,
+  "photos_only": {
+    "n": 20,
+    "median_ape": 0.4817826676233756,
+    "mean_ape": 0.7397639555294786,
+    "within_10pct": 0.15,
+    "within_20pct": 0.25,
+    "within_30pct": 0.3,
+    "interval_coverage": 0.35,
+    "median_interval_width_ratio": 0.5544836956521739,
+    "median_true_eur": 30245.0,
+    "median_pred_eur": 31750.0,
+    "make_match_rate": 1.0,
+    "median_year_abs_error": 4.0,
+    "median_km_ape": 0.4149308734794156
+  },
+  "recalibration_factor": 1.0500000000000003,
+  "n_holdout": 119,
+  "oracle_slices": {
+    "by_make": {
+      "Isuzu": {
+        "n": 1,
+        "median_ape": 1.4912,
+        "mean_ape": 1.4912
+      },
+      "Mitsubishi": {
+        "n": 1,
+        "median_ape": 0.7349,
+        "mean_ape": 0.7349
+      },
+      "Tatra": {
+        "n": 1,
+        "median_ape": 0.5442,
+        "mean_ape": 0.5442
+      },
+      "Renault": {
+        "n": 9,
+        "median_ape": 0.2623,
+        "mean_ape": 0.31143333333333334
+      },
+      "DAF": {
+        "n": 15,
+        "median_ape": 0.1853,
+        "mean_ape": 0.21728666666666666
+      },
+      "Mercedes-Benz": {
+        "n": 21,
+        "median_ape": 0.1712,
+        "mean_ape": 0.1981190476190476
+      },
+      "Scania": {
+        "n": 21,
+        "median_ape": 0.1583,
+        "mean_ape": 0.16345238095238093
+      },
+      "IVECO": {
+        "n": 15,
+        "median_ape": 0.1308,
+        "mean_ape": 0.35398
+      },
+      "Chevrolet": {
+        "n": 1,
+        "median_ape": 0.1007,
+        "mean_ape": 0.1007
+      },
+      "Volvo": {
+        "n": 12,
+        "median_ape": 0.0843,
+        "mean_ape": 0.1310666666666667
+      },
+      "MAN": {
+        "n": 21,
+        "median_ape": 0.0622,
+        "mean_ape": 0.1426142857142857
+      },
+      "GINAF": {
+        "n": 1,
+        "median_ape": 0.0297,
+        "mean_ape": 0.0297
+      }
+    },
+    "by_family": {
+      "CF": {
+        "n": 2,
+        "median_ape": 0.39599999999999996,
+        "mean_ape": 0.39599999999999996
+      },
+      "AROCS": {
+        "n": 2,
+        "median_ape": 0.35555000000000003,
+        "mean_ape": 0.35555000000000003
+      },
+      "P": {
+        "n": 2,
+        "median_ape": 0.35014999999999996,
+        "mean_ape": 0.35014999999999996
+      },
+      "Antos": {
+        "n": 2,
+        "median_ape": 0.32035,
+        "mean_ape": 0.32035
+      },
+      "D": {
+        "n": 3,
+        "median_ape": 0.2623,
+        "mean_ape": 0.2797
+      },
+      "XF": {
+        "n": 7,
+        "median_ape": 0.1853,
+        "mean_ape": 0.21998571428571428
+      },
+      "DAILY": {
+        "n": 2,
+        "median_ape": 0.16905,
+        "mean_ape": 0.16905
+      },
+      "ATEGO": {
+        "n": 2,
+        "median_ape": 0.1513,
+        "mean_ape": 0.1513
+      },
+      "Atego": {
+        "n": 2,
+        "median_ape": 0.12719999999999998,
+        "mean_ape": 0.12719999999999998
+      },
+      "Daily": {
+        "n": 6,
+        "median_ape": 0.11660000000000001,
+        "mean_ape": 0.26993333333333336
+      },
+      "R450": {
+        "n": 2,
+        "median_ape": 0.0993,
+        "mean_ape": 0.0993
+      },
+      "TGX": {
+        "n": 6,
+        "median_ape": 0.08385,
+        "mean_ape": 0.11576666666666667
+      },
+      "FH": {
+        "n": 8,
+        "median_ape": 0.07930000000000001,
+        "mean_ape": 0.1132
+      },
+      "TGM": {
+        "n": 3,
+        "median_ape": 0.0622,
+        "mean_ape": 0.0794
+      },
+      "TGS": {
+        "n": 11,
+        "median_ape": 0.0524,
+        "mean_ape": 0.1768909090909091
+      },
+      "R": {
+        "n": 5,
+        "median_ape": 0.0448,
+        "mean_ape": 0.09988
+      },
+      "Actros": {
+        "n": 9,
+        "median_ape": 0.0349,
+        "mean_ape": 0.12657777777777776
+      },
+      "S-WAY": {
+        "n": 2,
+        "median_ape": 0.0262,
+        "mean_ape": 0.0262
+      }
+    },
+    "by_body": {
+      "car_transporter": {
+        "n": 3,
+        "median_ape": 0.512,
+        "mean_ape": 0.48666666666666664
+      },
+      "refrigerated": {
+        "n": 10,
+        "median_ape": 0.31584999999999996,
+        "mean_ape": 0.40800000000000003
+      },
+      "garbage": {
+        "n": 4,
+        "median_ape": 0.23425,
+        "mean_ape": 0.354025
+      },
+      "tow": {
+        "n": 4,
+        "median_ape": 0.1958,
+        "mean_ape": 0.25365
+      },
+      "box": {
+        "n": 25,
+        "median_ape": 0.1308,
+        "mean_ape": 0.205572
+      },
+      "tractor_unit": {
+        "n": 51,
+        "median_ape": 0.1198,
+        "mean_ape": 0.14340000000000003
+      },
+      "tipper": {
+        "n": 22,
+        "median_ape": 0.06455,
+        "mean_ape": 0.2731772727272727
+      }
+    },
+    "missing_km": {
+      "n": 0,
+      "median_ape": null,
+      "with_km_median_ape": 0.1341
+    },
+    "missing_power": {
+      "n": 15,
+      "median_ape": 0.4307,
+      "with_power_median_ape": 0.1262
+    },
+    "worst": [
+      {
+        "listing_id": "al-26061609231067148000",
+        "ape": 1.4912,
+        "true_eur": 6320.0,
+        "pred_mid": 15744,
+        "make": "Isuzu",
+        "model_family": "ELF",
+        "body_type": "refrigerated"
+      },
+      {
+        "listing_id": "al-25100916125623842800",
+        "ape": 1.3866,
+        "true_eur": 23270.0,
+        "pred_mid": 55537,
+        "make": "IVECO",
+        "model_family": "STRALIS",
+        "body_type": "tipper"
+      },
+      {
+        "listing_id": "al-26091021475541429700",
+        "ape": 1.195,
+        "true_eur": 11300.0,
+        "pred_mid": 24803,
+        "make": "IVECO",
+        "model_family": "Daily",
+        "body_type": "tipper"
+      },
+      {
+        "listing_id": "al-26091018191443612000",
+        "ape": 1.0164,
+        "true_eur": 12300.0,
+        "pred_mid": 24802,
+        "make": "IVECO",
+        "model_family": "EuroCargo",
+        "body_type": "tipper"
+      },
+      {
+        "listing_id": "al-21102619164525300300",
+        "ape": 0.7359,
+        "true_eur": 55500.0,
+        "pred_mid": 14658,
+        "make": "MAN",
+        "model_family": "TGS",
+        "body_type": "garbage"
+      },
+      {
+        "listing_id": "al-26061609243008419800",
+        "ape": 0.7349,
+        "true_eur": 5984.0,
+        "pred_mid": 10382,
+        "make": "Mitsubishi",
+        "model_family": "CANTER",
+        "body_type": "box"
+      },
+      {
+        "listing_id": "al-25101702454972063700",
+        "ape": 0.6914,
+        "true_eur": 6650.0,
+        "pred_mid": 11248,
+        "make": "Renault",
+        "model_family": "Midliner",
+        "body_type": "refrigerated"
+      },
+      {
+        "listing_id": "al-26090818015809633300",
+        "ape": 0.6479,
+        "true_eur": 45200.0,
+        "pred_mid": 15914,
+        "make": "Mercedes-Benz",
+        "model_family": "2532L",
+        "body_type": "car_transporter"
+      }
+    ]
+  },
   "oracle_sample": [
     {
       "listing_id": "al-21102619164525300300",
       "true_eur": 55500.0,
-      "pred_mid": 14090,
-      "pred_low": 10357,
-      "pred_high": 35307,
-      "ape": 0.7461,
-      "inside": false
+      "pred_mid": 14658,
+      "pred_low": 9886,
+      "pred_high": 38383,
+      "ape": 0.7359,
+      "inside": false,
+      "make": "MAN",
+      "model_family": "TGS",
+      "body_type": "garbage",
+      "has_km": true,
+      "has_power": false
     },
     {
       "listing_id": "al-22122817130208826200",
       "true_eur": 13300.0,
-      "pred_mid": 10487,
-      "pred_low": 9281,
-      "pred_high": 21126,
-      "ape": 0.2115,
-      "inside": true
+      "pred_mid": 10237,
+      "pred_low": 9325,
+      "pred_high": 27278,
+      "ape": 0.2303,
+      "inside": true,
+      "make": "IVECO",
+      "model_family": "DAILY",
+      "body_type": "garbage",
+      "has_km": true,
+      "has_power": true
     },
     {
       "listing_id": "al-23030709125776263800",
       "true_eur": 12300.0,
-      "pred_mid": 8697,
-      "pred_low": 6073,
-      "pred_high": 13647,
-      "ape": 0.293,
-      "inside": true
+      "pred_mid": 9951,
+      "pred_low": 5701,
+      "pred_high": 14224,
+      "ape": 0.191,
+      "inside": true,
+      "make": "Scania",
+      "model_family": "144",
+      "body_type": "tractor_unit",
+      "has_km": true,
+      "has_power": true
     },
     {
       "listing_id": "al-23052018521771379600",
       "true_eur": 34900.0,
-      "pred_mid": 22290,
-      "pred_low": 11097,
-      "pred_high": 47758,
-      "ape": 0.3613,
-      "inside": true
+      "pred_mid": 24373,
+      "pred_low": 11249,
+      "pred_high": 52363,
+      "ape": 0.3016,
+      "inside": true,
+      "make": "Scania",
+      "model_family": "P",
+      "body_type": "tipper",
+      "has_km": true,
+      "has_power": true
     },
     {
       "listing_id": "al-23072816545013658000",
       "true_eur": 8314.0,
-      "pred_mid": 6341,
-      "pred_low": 4665,
-      "pred_high": 18085,
-      "ape": 0.2374,
-      "inside": true
+      "pred_mid": 9488,
+      "pred_low": 5669,
+      "pred_high": 21848,
+      "ape": 0.1413,
+      "inside": true,
+      "make": "Renault",
+      "model_family": "PREMIUM",
+      "body_type": "tractor_unit",
+      "has_km": true,
+      "has_power": true
     },
     {
       "listing_id": "al-24062803204924051700",
       "true_eur": 34900.0,
-      "pred_mid": 33096,
-      "pred_low": 15812,
-      "pred_high": 38969,
-      "ape": 0.0517,
-      "inside": true
+      "pred_mid": 27571,
+      "pred_low": 13948,
+      "pred_high": 32893,
+      "ape": 0.21,
+      "inside": false,
+      "make": "Mercedes-Benz",
+      "model_family": "ATEGO",
+      "body_type": "tipper",
+      "has_km": true,
+      "has_power": true
     },
     {
       "listing_id": "al-24122710192721934100",
       "true_eur": 55500.0,
-      "pred_mid": 61812,
-      "pred_low": 57379,
-      "pred_high": 63545,
-      "ape": 0.1137,
-      "inside": false
+      "pred_mid": 62396,
+      "pred_low": 55184,
+      "pred_high": 65838,
+      "ape": 0.1242,
+      "inside": true,
+      "make": "Volvo",
+      "model_family": "FH",
+      "body_type": "tractor_unit",
+      "has_km": true,
+      "has_power": true
     },
     {
       "listing_id": "al-25021309494145850300",
       "true_eur": 33900.0,
-      "pred_mid": 29359,
-      "pred_low": 13218,
-      "pred_high": 44235,
-      "ape": 0.1339,
-      "inside": true
+      "pred_mid": 29554,
+      "pred_low": 20719,
+      "pred_high": 44872,
+      "ape": 0.1282,
+      "inside": true,
+      "make": "Scania",
+      "model_family": "R520",
+      "body_type": "tractor_unit",
+      "has_km": true,
+      "has_power": true
     },
     {
       "listing_id": "al-25022010053733192100",
       "true_eur": 32240.0,
-      "pred_mid": 33492,
-      "pred_low": 11080,
-      "pred_high": 66441,
-      "ape": 0.0388,
-      "inside": true
+      "pred_mid": 28993,
+      "pred_low": 11367,
+      "pred_high": 69403,
+      "ape": 0.1007,
+      "inside": true,
+      "make": "Chevrolet",
+      "model_family": "NQR",
+      "body_type": "box",
+      "has_km": true,
+      "has_power": false
     },
     {
       "listing_id": "al-25032714595589310400",
       "true_eur": 56500.0,
-      "pred_mid": 80889,
-      "pred_low": 34045,
-      "pred_high": 93422,
-      "ape": 0.4317,
-      "inside": true
+      "pred_mid": 80146,
+      "pred_low": 37934,
+      "pred_high": 96483,
+      "ape": 0.4185,
+      "inside": true,
+      "make": "Mercedes-Benz",
+      "model_family": "AROCS",
+      "body_type": "tipper",
+      "has_km": true,
+      "has_power": true
     },
     {
       "listing_id": "al-25040114482668537300",
       "true_eur": 33900.0,
-      "pred_mid": 24249,
-      "pred_low": 23074,
-      "pred_high": 40676,
-      "ape": 0.2847,
-      "inside": true
+      "pred_mid": 22160,
+      "pred_low": 22160,
+      "pred_high": 34656,
+      "ape": 0.3463,
+      "inside": true,
+      "make": "DAF",
+      "model_family": "XF",
+      "body_type": "tractor_unit",
+      "has_km": true,
+      "has_power": false
     },
     {
       "listing_id": "al-25070921592413590000",
       "true_eur": 13300.0,
-      "pred_mid": 14960,
-      "pred_low": 11387,
-      "pred_high": 22141,
-      "ape": 0.1248,
-      "inside": true
+      "pred_mid": 15596,
+      "pred_low": 12961,
+      "pred_high": 24222,
+      "ape": 0.1727,
+      "inside": true,
+      "make": "MAN",
+      "model_family": "TGM",
+      "body_type": "box",
+      "has_km": true,
+      "has_power": false
     }
   ],
-  "photos_sample": []
+  "photos_sample": [
+    {
+      "listing_id": "al-21102619164525300300",
+      "true_eur": 55500.0,
+      "pred_mid": 80000,
+      "pred_low": 58500,
+      "pred_high": 102000,
+      "ape": 0.4414,
+      "inside": false,
+      "identified_as": "MAN TGS",
+      "true_make": "MAN",
+      "true_family": "TGS",
+      "true_year": 2010,
+      "true_km": 600000,
+      "pred_year": 2013,
+      "pred_km": 225000,
+      "pred_year_high": 2016,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-22122817130208826200",
+      "true_eur": 13300.0,
+      "pred_mid": 21500,
+      "pred_low": 12500,
+      "pred_high": 30000,
+      "ape": 0.6165,
+      "inside": true,
+      "identified_as": "Iveco Daily",
+      "true_make": "IVECO",
+      "true_family": "DAILY",
+      "true_year": 2011,
+      "true_km": 293550,
+      "pred_year": 2017,
+      "pred_km": 338000,
+      "pred_year_high": 2019,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-23030709125776263800",
+      "true_eur": 12300.0,
+      "pred_mid": 31500,
+      "pred_low": 19500,
+      "pred_high": 43000,
+      "ape": 1.561,
+      "inside": false,
+      "identified_as": "Scania 144L",
+      "true_make": "Scania",
+      "true_family": "144",
+      "true_year": 1999,
+      "true_km": 1738591,
+      "pred_year": 2001,
+      "pred_km": 554000,
+      "pred_year_high": 2004,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-23052018521771379600",
+      "true_eur": 34900.0,
+      "pred_mid": 23500,
+      "pred_low": 18000,
+      "pred_high": 29500,
+      "ape": 0.3266,
+      "inside": false,
+      "identified_as": "Scania P-series",
+      "true_make": "Scania",
+      "true_family": "P",
+      "true_year": 2008,
+      "true_km": 124200,
+      "pred_year": 2012,
+      "pred_km": 796040,
+      "pred_year_high": 2016,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-23072816545013658000",
+      "true_eur": 8314.0,
+      "pred_mid": 21500,
+      "pred_low": 15500,
+      "pred_high": 27000,
+      "ape": 1.586,
+      "inside": false,
+      "identified_as": "Renault Premium",
+      "true_make": "Renault",
+      "true_family": "PREMIUM",
+      "true_year": 2007,
+      "true_km": 879185,
+      "pred_year": 2010,
+      "pred_km": 514384,
+      "pred_year_high": 2013,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-24062803204924051700",
+      "true_eur": 34900.0,
+      "pred_mid": 34500,
+      "pred_low": 24500,
+      "pred_high": 45000,
+      "ape": 0.0115,
+      "inside": true,
+      "identified_as": "Mercedes-Benz Atego",
+      "true_make": "Mercedes-Benz",
+      "true_family": "ATEGO",
+      "true_year": 2011,
+      "true_km": 398000,
+      "pred_year": 2009,
+      "pred_km": 371943,
+      "pred_year_high": 2013,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-24122710192721934100",
+      "true_eur": 55500.0,
+      "pred_mid": 53000,
+      "pred_low": 37500,
+      "pred_high": 62000,
+      "ape": 0.045,
+      "inside": true,
+      "identified_as": "Volvo FH",
+      "true_make": "Volvo",
+      "true_family": "FH",
+      "true_year": 2023,
+      "true_km": 570000,
+      "pred_year": 2017,
+      "pred_km": 638000,
+      "pred_year_high": 2020,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-25021309494145850300",
+      "true_eur": 33900.0,
+      "pred_mid": 28000,
+      "pred_low": 18500,
+      "pred_high": 37500,
+      "ape": 0.174,
+      "inside": true,
+      "identified_as": "Scania R-series",
+      "true_make": "Scania",
+      "true_family": "R520",
+      "true_year": 2016,
+      "true_km": 850500,
+      "pred_year": 2015,
+      "pred_km": 815324,
+      "pred_year_high": 2016,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-25022010053733192100",
+      "true_eur": 32240.0,
+      "pred_mid": 35500,
+      "pred_low": 22500,
+      "pred_high": 49000,
+      "ape": 0.1011,
+      "inside": true,
+      "identified_as": "Chevrolet NQR",
+      "true_make": "Chevrolet",
+      "true_family": "NQR",
+      "true_year": 2019,
+      "true_km": 109000,
+      "pred_year": 2013,
+      "pred_km": 230000,
+      "pred_year_high": 2020,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-25032714595589310400",
+      "true_eur": 56500.0,
+      "pred_mid": 86000,
+      "pred_low": 64000,
+      "pred_high": 107500,
+      "ape": 0.5221,
+      "inside": false,
+      "identified_as": "Mercedes-Benz Actros",
+      "true_make": "Mercedes-Benz",
+      "true_family": "AROCS",
+      "true_year": 2017,
+      "true_km": 182000,
+      "pred_year": 2008,
+      "pred_km": 300000,
+      "pred_year_high": 2011,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-25040114482668537300",
+      "true_eur": 33900.0,
+      "pred_mid": 32500,
+      "pred_low": 24000,
+      "pred_high": 38500,
+      "ape": 0.0413,
+      "inside": true,
+      "identified_as": "DAF XF",
+      "true_make": "DAF",
+      "true_family": "XF",
+      "true_year": 2021,
+      "true_km": 634000,
+      "pred_year": 2011,
+      "pred_km": 724000,
+      "pred_year_high": 2013,
+      "make_match": true
+    },
+    {
+      "listing_id": "al-25070921592413590000",
+      "true_eur": 13300.0,
+      "pred_mid": 19000,
+      "pred_low": 15500,
+      "pred_high": 22500,
+      "ape": 0.4286,
+      "inside": false,
+      "identified_as": "MAN TGL",
+      "true_make": "MAN",
+      "true_family": "TGM",
+      "true_year": 2013,
+      "true_km": 578000,
+      "pred_year": 2015,
+      "pred_km": 561000,
+      "pred_year_high": 2020,
+      "make_match": true
+    }
+  ]
 }

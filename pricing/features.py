@@ -17,7 +17,7 @@ from scrape import db, normalize
 
 CURRENT_YEAR = datetime.now().year
 
-CATEGORICAL = ["make_canon", "family_canon", "body_canon", "axle_canon", "condition_canon", "region"]
+CATEGORICAL = ["make_canon", "family_canon", "generation_canon", "body_canon", "axle_canon", "condition_canon", "region"]
 NUMERIC = ["age", "log_km", "power_hp_filled", "euro_filled", "has_power", "has_euro", "has_km"]
 FEATURES = CATEGORICAL + NUMERIC
 TARGET = "log_price_eur"
@@ -32,7 +32,7 @@ OTHER = "other"
 
 # Sanity bounds. Anything outside these is a data error or a vehicle so unusual
 # it would only add noise.
-PRICE_MIN_EUR = 1500.0
+PRICE_MIN_EUR = 5000.0
 PRICE_MAX_EUR = 400_000.0
 YEAR_MIN = 1990
 KM_MIN = 1_000
@@ -103,6 +103,36 @@ def build_frame(df: pd.DataFrame) -> pd.DataFrame:
     out = out[out["year"].notna() & (out["year"] >= YEAR_MIN) & (out["year"] <= CURRENT_YEAR + 1)]
     out = out[out["km"].notna() & (out["km"] >= KM_MIN) & (out["km"] <= KM_MAX)]
     out = out[out["make_canon"].astype(str).str.len() > 0]
+
+    # Wrecks and parts ads are not running-truck prices. They fatten the error tail.
+    if "condition_canon" in out.columns:
+        out = out[~out["condition_canon"].isin(["crashed", "parts"])]
+    if "title" in out.columns:
+        wreck = out["title"].fillna("").str.lower().str.contains(
+            r"for parts|spare parts|na czesci|na części|unfall|crashed|salvage|damaged engine",
+            regex=True,
+        )
+        out = out[~wreck]
+
+    # generation_canon is produced by normalize_listing; fill if a spec row skipped it.
+    if "generation_canon" not in out.columns:
+        out["generation_canon"] = [
+            normalize.canonical_generation(m, f, y, "")
+            for m, f, y in zip(out.get("make_canon", ""), out.get("family_canon", ""), out.get("year", 0))
+        ]
+
+    # Drop within-family asking-price freaks (mis-scraped extras, kit trucks).
+    if "family_canon" in out.columns and "price_eur" in out.columns:
+        def _in_band(g: pd.DataFrame) -> pd.DataFrame:
+            if len(g) < 12:
+                return g
+            q1, q99 = g["price_eur"].quantile(0.01), g["price_eur"].quantile(0.99)
+            iqr = g["price_eur"].quantile(0.75) - g["price_eur"].quantile(0.25)
+            lo = min(q1, g["price_eur"].median() - 4 * iqr)
+            hi = max(q99, g["price_eur"].median() + 4 * iqr)
+            return g[(g["price_eur"] >= lo) & (g["price_eur"] <= hi)]
+
+        out = out.groupby("family_canon", group_keys=False).apply(_in_band)
 
     out = derive_features(out)
     out[TARGET] = np.log(out["price_eur"].astype(float))
@@ -187,6 +217,8 @@ def spec_to_row(spec: dict) -> pd.DataFrame:
         "km": spec.get("km"),
         "power_hp_canon": power,
         "euro_canon": normalize.euro_number(spec.get("euro_class")),
+        "generation_canon": spec.get("generation_canon")
+        or normalize.canonical_generation(make, family, spec.get("year"), spec.get("generation") or ""),
         "price_eur": np.nan,
     }
     df = pd.DataFrame([row])

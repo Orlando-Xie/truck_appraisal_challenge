@@ -41,6 +41,29 @@ def downscale_for_model(raw: bytes, max_edge: int | None = None) -> bytes:
     return buf.getvalue()
 
 
+def crop_region(raw: bytes, box: tuple[float, float, float, float], min_edge: int = 280) -> bytes:
+    """Crop a normalised box (x0, y0, x1, y1) and re-encode a tight JPEG.
+
+    Used for the cheap second Flash pass on a grille or odometer, so we do not
+    resend the whole photo just to read six digits or a badge.
+    """
+    img = load_rgb(raw)
+    w, h = img.size
+    x0, y0, x1, y1 = box
+    left = max(0, min(w - 2, int(x0 * w)))
+    top = max(0, min(h - 2, int(y0 * h)))
+    right = max(left + 2, min(w, int(x1 * w)))
+    bottom = max(top + 2, min(h, int(y1 * h)))
+    crop = img.crop((left, top, right, bottom))
+    cw, ch = crop.size
+    if max(cw, ch) < min_edge:
+        scale = min_edge / max(cw, ch)
+        crop = crop.resize((max(1, int(cw * scale)), max(1, int(ch * scale))), Image.LANCZOS)
+    buf = io.BytesIO()
+    crop.save(buf, "JPEG", quality=90, optimize=True)
+    return buf.getvalue()
+
+
 def assess(filename: str, raw: bytes) -> ImageQuality:
     """Measure sharpness, exposure and resolution."""
     q = ImageQuality(filename=filename)

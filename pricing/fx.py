@@ -2,16 +2,18 @@
 
 The price model is fitted on a mostly European corpus in EUR, because that is
 where the data volume is. Turkish asking prices sit above European ones for the
-same truck: import duty, ÖTV and KDV, plus a structurally tighter supply of
+same truck: import duty, OTV and KDV, plus a structurally tighter supply of
 clean used tractor units.
 
 Rather than hide that, the pipeline reports it as two explicit factors:
 
     price_TRY = price_EUR * turkiye_multiplier * EURTRY
 
-Both are surfaced in the result so a user can see exactly what was assumed. The
-multiplier is fitted by `pricing/calibrate_turkiye.py` from Turkish listings; the
-value in config is only the fallback.
+The global multiplier is the fallback. When calibration has enough Turkish
+seeds, `multiplier_for` picks a make x age-band factor instead of one 1.99x
+for every truck.
+
+Both are surfaced in the result so a user can see exactly what was assumed.
 """
 
 from __future__ import annotations
@@ -23,6 +25,23 @@ from datetime import datetime, timezone
 import config
 
 log = logging.getLogger(__name__)
+
+
+def age_band(year: int | None) -> str:
+    """Coarse age buckets used for segmented TRY multipliers."""
+    try:
+        y = int(year) if year else 0
+    except (TypeError, ValueError):
+        y = 0
+    if y >= 2020:
+        return "2020+"
+    if y >= 2016:
+        return "2016-2019"
+    if y >= 2012:
+        return "2012-2015"
+    if y > 0:
+        return "pre-2012"
+    return "unknown"
 
 
 def load_calibration() -> dict:
@@ -37,6 +56,7 @@ def load_calibration() -> dict:
                 "n_listings": int(data.get("n_listings", 0)),
                 "fitted_at": data.get("fitted_at", ""),
                 "notes": data.get("notes", ""),
+                "segments": data.get("segments") or {},
             }
         except Exception as exc:  # pragma: no cover
             log.warning("could not read calibration (%s); using defaults", exc)
@@ -50,10 +70,18 @@ def load_calibration() -> dict:
             "Turkish market calibration has not been run, so a default premium over European "
             "asking prices is being applied."
         ),
+        "segments": {},
     }
 
 
-def save_calibration(multiplier: float, eur_try: float, n_listings: int, notes: str, source: str = "arabam") -> None:
+def save_calibration(
+    multiplier: float,
+    eur_try: float,
+    n_listings: int,
+    notes: str,
+    source: str = "arabam",
+    segments: dict | None = None,
+) -> None:
     payload = {
         "turkiye_multiplier": round(multiplier, 4),
         "eur_try": round(eur_try, 4),
@@ -61,11 +89,36 @@ def save_calibration(multiplier: float, eur_try: float, n_listings: int, notes: 
         "source": source,
         "notes": notes,
         "fitted_at": datetime.now(timezone.utc).isoformat(),
+        "segments": segments or {},
     }
     config.CALIBRATION_PATH.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     log.info("saved calibration: %s", payload)
 
 
-def eur_to_try(amount_eur: float, calibration: dict | None = None) -> float:
+def multiplier_for(spec: dict | None, calibration: dict | None = None) -> float:
+    """Segmented TRY premium: make|age-band, then make, then age-band, then global."""
     cal = calibration or load_calibration()
-    return amount_eur * cal["turkiye_multiplier"] * cal["eur_try"]
+    global_m = float(cal.get("turkiye_multiplier") or config.DEFAULT_TURKIYE_MULTIPLIER)
+    segments = cal.get("segments") or {}
+    if not spec or not segments:
+        return global_m
+
+    make = str(spec.get("make") or spec.get("make_canon") or "").strip()
+    band = age_band(spec.get("year"))
+    for key in (f"{make}|{band}", make, band):
+        row = segments.get(key)
+        if not row:
+            continue
+        try:
+            n = int(row.get("n") or 0)
+            value = float(row.get("multiplier") or 0)
+        except (TypeError, ValueError):
+            continue
+        if n >= 3 and 0.4 <= value <= 4.0:
+            return value
+    return global_m
+
+
+def eur_to_try(amount_eur: float, calibration: dict | None = None, spec: dict | None = None) -> float:
+    cal = calibration or load_calibration()
+    return amount_eur * multiplier_for(spec, cal) * cal["eur_try"]

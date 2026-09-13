@@ -2,6 +2,7 @@
   "features": [
     "make_canon",
     "family_canon",
+    "generation_canon",
     "body_canon",
     "axle_canon",
     "condition_canon",
@@ -17,6 +18,7 @@
   "categorical": [
     "make_canon",
     "family_canon",
+    "generation_canon",
     "body_canon",
     "axle_canon",
     "condition_canon",
@@ -33,42 +35,43 @@
   ],
   "interval_factor": 1.2500000000000004,
   "residual_quantiles": {
-    "p50": 0.13897555738020342,
-    "p80": 0.35701315066704425,
-    "p90": 0.5303024689099176
+    "p50": 0.1472073814721787,
+    "p80": 0.3701293378010287,
+    "p90": 0.5294945479242428
   },
-  "trained_at": "2026-09-12T22:43:31.407003+00:00",
-  "n_train": 4794,
-  "n_test": 1053,
+  "trained_at": "2026-09-13T01:16:46.219911+00:00",
+  "n_train": 4645,
+  "n_test": 1020,
   "metrics_train": {
-    "n": 4794,
-    "median_ape": 0.0849045575867001,
-    "mean_ape": 0.19843914710689747,
-    "within_10pct": 0.5356695869837297,
-    "within_20pct": 0.7127659574468085,
-    "within_30pct": 0.8149770546516479,
-    "interval_coverage": 0.7911973299958281,
-    "median_interval_width_ratio": 0.6398193250516193,
-    "median_price_eur": 26950.0
+    "n": 4645,
+    "median_ape": 0.07869083643928301,
+    "mean_ape": 0.17365317194168312,
+    "within_10pct": 0.5506996770721205,
+    "within_20pct": 0.7289558665231431,
+    "within_30pct": 0.8316469321851453,
+    "interval_coverage": 0.7931108719052745,
+    "median_interval_width_ratio": 0.6056118051524993,
+    "median_price_eur": 27330.0
   },
   "metrics_test": {
-    "n": 1053,
-    "median_ape": 0.13897555738020342,
-    "mean_ape": 0.26081136102242297,
-    "within_10pct": 0.4121557454890788,
-    "within_20pct": 0.6258309591642925,
-    "within_30pct": 0.7435897435897436,
-    "interval_coverage": 0.6942070275403609,
-    "median_interval_width_ratio": 0.624924865147434,
+    "n": 1020,
+    "median_ape": 0.1472073814721787,
+    "mean_ape": 0.23013517326151364,
+    "within_10pct": 0.4019607843137255,
+    "within_20pct": 0.6039215686274509,
+    "within_30pct": 0.7313725490196078,
+    "interval_coverage": 0.7166666666666667,
+    "median_interval_width_ratio": 0.6194076733591092,
     "median_price_eur": 27900.0
   },
-  "price_median_eur": 27000.0,
+  "price_median_eur": 27500.0,
   "n_categories": {
-    "make_canon": 18,
-    "family_canon": 111,
+    "make_canon": 17,
+    "family_canon": 108,
+    "generation_canon": 19,
     "body_canon": 8,
     "axle_canon": 11,
-    "condition_canon": 4,
+    "condition_canon": 3,
     "region": 5
   }
 }

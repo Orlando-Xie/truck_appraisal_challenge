@@ -13,12 +13,15 @@ import logging
 
 import config
 from vision.client import VisionError, get_client
+from vision.quality import crop_region
 from vision.schemas import (
+    BadgeRead,
     BatchTriage,
     ConditionReport,
     Identification,
     ImageQuality,
     ImageTriage,
+    OdometerRead,
     SubjectClass,
     TriagedImage,
     ViewType,
@@ -217,10 +220,10 @@ def pick_stage_images(
     ]
     priority = [
         ViewType.front_three_quarter,
-        ViewType.side,
-        ViewType.front,
         ViewType.tire_wheel,
         ViewType.dashboard_odometer,
+        ViewType.side,
+        ViewType.front,
         ViewType.interior_cab,
         ViewType.rear_three_quarter,
         ViewType.engine_bay,
@@ -244,6 +247,110 @@ def pick_stage_images(
             extras.append(im)
     chosen = (unique + extras)[:limit]
     return [(im.filename, by_name[im.filename]) for im in chosen]
+
+
+
+BADGE_PROMPT = """You are reading a tight crop of a truck grille, headlight or model badge.
+
+Report only what is legible. Do not guess a generation you cannot support from this crop.
+Leave numeric fields 0 and strings empty when the crop does not show them.
+`generation_year_low` / `generation_year_high` must be the production window of the
+visual generation (for example Actros MP4 is 2011-2018), not a single guessed year."""
+
+ODOMETER_PROMPT = """You are reading a tight crop of a truck instrument cluster.
+
+If odometer digits are legible, set digits_visible true and reading_km to the kilometre
+figure (not miles, not hours). If you cannot read the digits, set digits_visible false
+and reading_km 0. Do not invent a round number."""
+
+
+def _blob_for(filename: str, downscaled: list[tuple[str, bytes]]) -> bytes | None:
+    for fn, blob in downscaled:
+        if fn == filename:
+            return blob
+    return None
+
+
+def _first_view(triaged: list[TriagedImage], views: set[ViewType]) -> TriagedImage | None:
+    ranked = [im for im in triaged if im.quality.usable and im.triage.view in views]
+    ranked.sort(key=lambda im: -im.triage.view_confidence)
+    return ranked[0] if ranked else None
+
+
+async def refine_identification(
+    ident: Identification,
+    triaged: list[TriagedImage],
+    downscaled: list[tuple[str, bytes]],
+) -> Identification:
+    """Second cheap Flash pass: grille crop for generation, dash crop for km."""
+    client = get_client()
+    front = _first_view(triaged, {ViewType.front_three_quarter, ViewType.front})
+    dash = _first_view(triaged, {ViewType.dashboard_odometer})
+
+    if front:
+        blob = _blob_for(front.filename, downscaled)
+        if blob:
+            try:
+                crop = crop_region(blob, (0.18, 0.12, 0.82, 0.58))
+                badge = await client.structured(
+                    prompt=BADGE_PROMPT,
+                    images=[(f"badge_{front.filename}", crop)],
+                    response_model=BadgeRead,
+                    temperature=0.0,
+                )
+                ident = _merge_badge(ident, badge)
+            except Exception as exc:  # noqa: BLE001
+                log.warning("badge refine failed: %s", exc)
+
+    if dash:
+        blob = _blob_for(dash.filename, downscaled)
+        if blob:
+            try:
+                crop = crop_region(blob, (0.18, 0.22, 0.82, 0.78))
+                odo = await client.structured(
+                    prompt=ODOMETER_PROMPT,
+                    images=[(f"odo_{dash.filename}", crop)],
+                    response_model=OdometerRead,
+                    temperature=0.0,
+                )
+                ident = _merge_odometer(ident, odo)
+            except Exception as exc:  # noqa: BLE001
+                log.warning("odometer refine failed: %s", exc)
+    return ident
+
+
+def _merge_badge(ident: Identification, badge: BadgeRead) -> Identification:
+    data = ident.model_dump()
+    if badge.make and (not ident.make or ident.make_confidence < 0.7):
+        data["make"] = badge.make
+        data["make_confidence"] = max(ident.make_confidence, 0.72)
+    if badge.model_family and (not ident.model_family or ident.model_confidence < 0.7):
+        data["model_family"] = badge.model_family
+        data["model_confidence"] = max(ident.model_confidence, 0.7)
+    if badge.model_variant and not ident.model_variant:
+        data["model_variant"] = badge.model_variant
+    if badge.generation:
+        data["generation"] = badge.generation
+    if badge.generation_year_low and badge.generation_year_high:
+        data["generation_year_low"] = badge.generation_year_low
+        data["generation_year_high"] = badge.generation_year_high
+    if badge.estimated_power_hp and not ident.estimated_power_hp:
+        data["estimated_power_hp"] = badge.estimated_power_hp
+    if badge.euro_class and not ident.euro_class:
+        data["euro_class"] = badge.euro_class
+    if badge.evidence:
+        data["identifying_evidence"] = list(ident.identifying_evidence) + [f"badge crop: {badge.evidence}"]
+    return Identification.model_validate(data)
+
+
+def _merge_odometer(ident: Identification, odo: OdometerRead) -> Identification:
+    if not odo.digits_visible or odo.reading_km < 1000 or odo.confidence < 0.4:
+        return ident
+    data = ident.model_dump()
+    data["odometer_reading_km"] = odo.reading_km
+    note = f"odometer crop reads {odo.reading_km:,} km".replace(",", " ")
+    data["identifying_evidence"] = list(ident.identifying_evidence) + [note]
+    return Identification.model_validate(data)
 
 
 async def identify(images: list[tuple[str, bytes]], hints: str = "") -> Identification:

@@ -75,7 +75,7 @@ def cache_key(images: list[tuple[str, bytes]], claims: SellerClaims | None) -> s
         h.update(hashlib.sha256(blob).digest())
     if claims:
         h.update(json.dumps(claims.model_dump(), sort_keys=True, default=str).encode())
-    h.update(b"v5")  # bump to invalidate cached results after a pipeline change
+    h.update(b"v7")  # bump to invalidate cached results after a pipeline change
     return h.hexdigest()[:32]
 
 
@@ -153,6 +153,7 @@ def _compute_widening(
     n_comps: int,
     n_images: int,
     km_estimated: bool,
+    year_estimated: bool,
     contradictions: list[Contradiction],
 ) -> tuple[float, list[str], list[MissingView]]:
     """How much to widen the market band, and why. Every reason is user-facing."""
@@ -192,6 +193,9 @@ def _compute_widening(
         # mileage is the single largest source of error in a photo-only appraisal.
         total += 6.0
         reasons.append("Mileage had to be estimated rather than read.")
+    if year_estimated:
+        total += 8.0
+        reasons.append("Build year is a generation estimate, not a plate or VIN read.")
 
     if n_comps < int(cfg["thin_comparables_threshold"]):
         total += float(cfg["thin_comparables_pct"])
@@ -342,6 +346,14 @@ async def appraise(
     ident, condition, duplicate_photos = await asyncio.gather(
         _identify(), _condition(), _duplicates()
     )
+    if ident is not None:
+        try:
+            ident = await asyncio.wait_for(
+                stages.refine_identification(ident, triaged, downscaled),
+                timeout=min(40.0, config.STAGE_TIMEOUT_S),
+            )
+        except Exception as exc:
+            log.warning("identification refine failed: %s", exc)
 
     if ident is not None:
         await _emit(
@@ -387,6 +399,7 @@ async def appraise(
         len(comparables),
         len(usable),
         bool(provenance.get("km_estimated")),
+        bool(provenance.get("year_estimated")),
         contradictions,
     )
     widening_reasons = ident_notes + widening_reasons
@@ -446,7 +459,8 @@ async def appraise(
     final_eur = predict.apply_deductions(positioned, ded_total)
 
     price_eur = predict.round_range(final_eur, "EUR")
-    price_try = predict.round_range(predict.to_try(final_eur, calibration), "TRY")
+    used_mult = fx.multiplier_for(spec, calibration)
+    price_try = predict.round_range(predict.to_try(final_eur, calibration, spec), "TRY")
 
     # Scenario pricing when mileage credibility is in doubt.
     scenarios: list[ScenarioPrice] = []
@@ -464,7 +478,7 @@ async def appraise(
                 ScenarioPrice(
                     label="If the stated mileage is genuine",
                     assumption=f"Mileage is {claims.km:,} km as stated".replace(",", " "),
-                    price_try=predict.round_range(predict.to_try(alt_final, calibration), "TRY"),
+                    price_try=predict.round_range(predict.to_try(alt_final, calibration, alt_spec), "TRY"),
                     price_eur=predict.round_range(alt_final, "EUR"),
                 ),
                 ScenarioPrice(
@@ -509,7 +523,7 @@ async def appraise(
         market_baseline_eur=predict.round_range(band, "EUR"),
         total_deductions_eur=ded_total,
         deductions=ded_lines,
-        turkiye_multiplier=calibration["turkiye_multiplier"],
+        turkiye_multiplier=used_mult,
         eur_try_rate=calibration["eur_try"],
         comparable_count=len(comparables),
         interval_widening_pct=round(widening_pct, 1),

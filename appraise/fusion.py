@@ -140,16 +140,49 @@ def resolve_year(ident: Identification | None, claims: SellerClaims | None) -> t
             return claims.year, "the seller's stated year (no visual generation cue to check it against)"
 
     if ident and ident.generation_year_low and ident.generation_year_high:
-        # Mid-point of the generation is the best photo-only estimate.
-        mid = int((ident.generation_year_low + ident.generation_year_high) / 2)
+        lo, hi = ident.generation_year_low, ident.generation_year_high
+        typical = _corpus_median_year(ident.make, ident.model_family, lo, hi)
+        if typical and lo <= typical <= hi:
+            return typical, (
+                f"the typical build year for this generation in the comparable corpus "
+                f"({lo}-{hi}), not a single year read from a plate"
+            )
+        mid = int((lo + hi) / 2)
         return mid, (
-            f"the midpoint of the {ident.generation or 'identified'} generation "
-            f"({ident.generation_year_low}-{ident.generation_year_high}), estimated from the photos"
+            f"an estimated year inside the {ident.generation or 'identified'} generation "
+            f"({lo}-{hi}); the exact build year was not visible"
         )
 
     if claims and claims.year:
         return claims.year, "the seller's stated year, which could not be checked from the photos"
     return None, "no year could be established"
+
+
+def _corpus_median_year(make: str | None, family: str | None, lo: int, hi: int) -> int | None:
+    """Median advertised year for this family inside a generation window."""
+    conn = db.connect()
+    try:
+        def _query(use_family: bool) -> int | None:
+            clauses = ["year > 1995", "price_eur > 0", "body_type != '_negative'", "year BETWEEN ? AND ?"]
+            params: list = [int(lo), int(hi)]
+            if make:
+                clauses.append("make = ? COLLATE NOCASE")
+                params.append(normalize.canonical_make(make))
+            if use_family and family:
+                clauses.append("model_family LIKE ? COLLATE NOCASE")
+                params.append(f"%{str(family).strip()}%")
+            rows = conn.execute(
+                "SELECT year FROM listings WHERE " + " AND ".join(clauses) + " ORDER BY year",
+                params,
+            ).fetchall()
+            years = [int(r["year"]) for r in rows if r["year"]]
+            if len(years) < 8:
+                return None
+            return years[len(years) // 2]
+
+        return _query(True) or _query(False)
+    finally:
+        conn.close()
 
 
 def _corpus_median_km(make: str | None, family: str | None, year: int | None) -> int | None:
@@ -187,6 +220,9 @@ def resolve_km(
     anything except the model itself, so where the number came from is reported
     rather than buried.
     """
+    if ident and ident.odometer_reading_km > 1000:
+        return ident.odometer_reading_km, "the odometer digits read from a dashboard crop", False
+
     wear = condition.wear if condition else None
 
     if wear and wear.odometer_visible and wear.odometer_reading_km > 1000 and wear.odometer_confidence >= 0.45:
@@ -239,11 +275,14 @@ def build_spec(
     family_text = (ident.model_family if ident else None) or (claims.model if claims else None) or ""
     variant = ident.model_variant if ident else ""
 
+    generation = ident.generation if ident else ""
     spec = {
         "make": make,
         "model_family": family_text,
         "model_variant": variant,
         "family_canon": normalize.canonical_family(make, family_text, variant),
+        "generation": generation,
+        "generation_canon": normalize.canonical_generation(make, family_text, year, generation),
         "body_type": (ident.body_type if ident else "") or "tractor_unit",
         "axle_config": (ident.axle_configuration if ident else "") or "",
         "euro_class": (ident.euro_class if ident else "") or "",
@@ -254,8 +293,12 @@ def build_spec(
         # Priced as a Turkish-market vehicle regardless of where comparables came from.
         "country": "Turkey",
     }
+    year_estimated = bool(year) and (
+        "typical build year" in year_src or "estimated year" in year_src or "midpoint" in year_src
+    )
     provenance = {
         "year": year_src,
+        "year_estimated": year_estimated,
         "km": km_src,
         "km_estimated": km_estimated,
         "make": "read from the photos" if ident and ident.make else "not established",

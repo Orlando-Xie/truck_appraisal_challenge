@@ -1,47 +1,667 @@
 {
   "source": "manual_seed",
-  "notes": "Asking prices collected from public Turkish tractor-unit (cekici) listings, used when the arabam.com scrape cannot get past Cloudflare. Enough to fit a single market multiplier; replace by running python -m scrape.arabam then python -m pricing.calibrate_turkiye.",
+  "notes": "Asking prices collected from public Turkish listings, used when the arabam.com scrape cannot get past Cloudflare. Expanded beyond 4x2 tractors so the TRY multiplier can be segmented by make and age band. Replace by running python -m scrape.arabam then python -m pricing.calibrate_turkiye.",
   "eur_try": 47.5,
   "listings": [
-    {"make": "Mercedes-Benz", "model_family": "Actros", "year": 2018, "km": 720000, "axle_config": "4x2", "price_try": 2450000, "notes": "Euro 6, typical Polish-import Actros 1845"},
-    {"make": "Mercedes-Benz", "model_family": "Actros", "year": 2016, "km": 890000, "axle_config": "4x2", "price_try": 1850000, "notes": "Euro 6"},
-    {"make": "Mercedes-Benz", "model_family": "Actros", "year": 2014, "km": 1050000, "axle_config": "4x2", "price_try": 1350000, "notes": "Euro 5/6 mix"},
-    {"make": "Mercedes-Benz", "model_family": "Actros", "year": 2020, "km": 480000, "axle_config": "4x2", "price_try": 3350000, "notes": "MP5"},
-    {"make": "Mercedes-Benz", "model_family": "Actros", "year": 2012, "km": 1200000, "axle_config": "4x2", "price_try": 890000, "notes": "MP3"},
-    {"make": "MAN", "model_family": "TGX", "year": 2018, "km": 680000, "axle_config": "4x2", "price_try": 2250000, "notes": "18.480"},
-    {"make": "MAN", "model_family": "TGX", "year": 2016, "km": 850000, "axle_config": "4x2", "price_try": 1750000, "notes": "18.440"},
-    {"make": "MAN", "model_family": "TGX", "year": 2014, "km": 980000, "axle_config": "4x2", "price_try": 1280000, "notes": "Euro 6"},
-    {"make": "MAN", "model_family": "TGX", "year": 2019, "km": 520000, "axle_config": "4x2", "price_try": 2750000, "notes": "18.500"},
-    {"make": "Scania", "model_family": "R-series", "year": 2018, "km": 650000, "axle_config": "4x2", "price_try": 2650000, "notes": "R450 Next Gen"},
-    {"make": "Scania", "model_family": "R-series", "year": 2016, "km": 820000, "axle_config": "4x2", "price_try": 1980000, "notes": "R450 Streamline"},
-    {"make": "Scania", "model_family": "R-series", "year": 2014, "km": 950000, "axle_config": "4x2", "price_try": 1450000, "notes": "R440"},
-    {"make": "Scania", "model_family": "S-series", "year": 2019, "km": 540000, "axle_config": "4x2", "price_try": 3250000, "notes": "S500"},
-    {"make": "Volvo", "model_family": "FH", "year": 2018, "km": 700000, "axle_config": "4x2", "price_try": 2380000, "notes": "FH460"},
-    {"make": "Volvo", "model_family": "FH", "year": 2016, "km": 880000, "axle_config": "4x2", "price_try": 1820000, "notes": "FH4"},
-    {"make": "Volvo", "model_family": "FH", "year": 2014, "km": 1020000, "axle_config": "4x2", "price_try": 1320000, "notes": "FH4 early"},
-    {"make": "Volvo", "model_family": "FH", "year": 2020, "km": 420000, "axle_config": "4x2", "price_try": 3480000, "notes": "FH500"},
-    {"make": "DAF", "model_family": "XF", "year": 2018, "km": 710000, "axle_config": "4x2", "price_try": 1980000, "notes": "XF480 Super Space"},
-    {"make": "DAF", "model_family": "XF", "year": 2016, "km": 860000, "axle_config": "4x2", "price_try": 1550000, "notes": "XF106"},
-    {"make": "DAF", "model_family": "XF", "year": 2019, "km": 580000, "axle_config": "4x2", "price_try": 2350000, "notes": "XF480"},
-    {"make": "Renault", "model_family": "T", "year": 2018, "km": 690000, "axle_config": "4x2", "price_try": 1680000, "notes": "T480"},
-    {"make": "Renault", "model_family": "T", "year": 2016, "km": 840000, "axle_config": "4x2", "price_try": 1320000, "notes": "T460"},
-    {"make": "IVECO", "model_family": "Stralis", "year": 2017, "km": 780000, "axle_config": "4x2", "price_try": 1450000, "notes": "AS440"},
-    {"make": "IVECO", "model_family": "S-Way", "year": 2020, "km": 450000, "axle_config": "4x2", "price_try": 2780000, "notes": "S-Way 490"},
-    {"make": "Ford", "model_family": "F-MAX", "year": 2021, "km": 380000, "axle_config": "4x2", "price_try": 2650000, "notes": "Turkish-built"},
-    {"make": "Ford", "model_family": "F-MAX", "year": 2019, "km": 520000, "axle_config": "4x2", "price_try": 2150000, "notes": "F-MAX 500"},
-    {"make": "Mercedes-Benz", "model_family": "Actros", "year": 2018, "km": 640000, "axle_config": "6x2", "price_try": 2680000, "notes": "2545 6x2"},
-    {"make": "Scania", "model_family": "R-series", "year": 2017, "km": 760000, "axle_config": "6x2", "price_try": 2280000, "notes": "R450 6x2"},
-    {"make": "MAN", "model_family": "TGX", "year": 2015, "km": 920000, "axle_config": "4x2", "price_try": 1480000, "notes": "18.440"},
-    {"make": "Volvo", "model_family": "FH", "year": 2015, "km": 940000, "axle_config": "4x2", "price_try": 1520000, "notes": "FH460"},
-    {"make": "Mercedes-Benz", "model_family": "Actros", "year": 2013, "km": 1150000, "axle_config": "4x2", "price_try": 980000, "notes": "MP3 1844"},
-    {"make": "BMC", "model_family": "Tugra", "year": 2020, "km": 310000, "axle_config": "4x2", "price_try": 1950000, "notes": "Domestic make"},
-    {"make": "Mercedes-Benz", "model_family": "Arocs", "year": 2019, "km": 410000, "axle_config": "6x4", "price_try": 3120000, "notes": "Construction spec"},
-    {"make": "DAF", "model_family": "XF", "year": 2015, "km": 990000, "axle_config": "4x2", "price_try": 1180000, "notes": "XF105/106"},
-    {"make": "Scania", "model_family": "G-series", "year": 2018, "km": 610000, "axle_config": "4x2", "price_try": 2180000, "notes": "G410"},
-    {"make": "Volvo", "model_family": "FM", "year": 2017, "km": 720000, "axle_config": "6x2", "price_try": 1980000, "notes": "FM450"},
-    {"make": "Mercedes-Benz", "model_family": "Actros", "year": 2021, "km": 320000, "axle_config": "4x2", "price_try": 4250000, "notes": "MP5 1848"},
-    {"make": "MAN", "model_family": "TGX", "year": 2020, "km": 390000, "axle_config": "4x2", "price_try": 3180000, "notes": "18.510"},
-    {"make": "Renault", "model_family": "T", "year": 2019, "km": 540000, "axle_config": "4x2", "price_try": 1880000, "notes": "T High 520"},
-    {"make": "IVECO", "model_family": "Stralis", "year": 2015, "km": 910000, "axle_config": "4x2", "price_try": 980000, "notes": "Hi-Way"}
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2018,
+      "km": 720000,
+      "axle_config": "4x2",
+      "price_try": 2450000,
+      "notes": "Euro 6, typical Polish-import Actros 1845"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2016,
+      "km": 890000,
+      "axle_config": "4x2",
+      "price_try": 1850000,
+      "notes": "Euro 6"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2014,
+      "km": 1050000,
+      "axle_config": "4x2",
+      "price_try": 1350000,
+      "notes": "Euro 5/6 mix"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2020,
+      "km": 480000,
+      "axle_config": "4x2",
+      "price_try": 3350000,
+      "notes": "MP5"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2012,
+      "km": 1200000,
+      "axle_config": "4x2",
+      "price_try": 890000,
+      "notes": "MP3"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGX",
+      "year": 2018,
+      "km": 680000,
+      "axle_config": "4x2",
+      "price_try": 2250000,
+      "notes": "18.480"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGX",
+      "year": 2016,
+      "km": 850000,
+      "axle_config": "4x2",
+      "price_try": 1750000,
+      "notes": "18.440"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGX",
+      "year": 2014,
+      "km": 980000,
+      "axle_config": "4x2",
+      "price_try": 1280000,
+      "notes": "Euro 6"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGX",
+      "year": 2019,
+      "km": 520000,
+      "axle_config": "4x2",
+      "price_try": 2750000,
+      "notes": "18.500"
+    },
+    {
+      "make": "Scania",
+      "model_family": "R-series",
+      "year": 2018,
+      "km": 650000,
+      "axle_config": "4x2",
+      "price_try": 2650000,
+      "notes": "R450 Next Gen"
+    },
+    {
+      "make": "Scania",
+      "model_family": "R-series",
+      "year": 2016,
+      "km": 820000,
+      "axle_config": "4x2",
+      "price_try": 1980000,
+      "notes": "R450 Streamline"
+    },
+    {
+      "make": "Scania",
+      "model_family": "R-series",
+      "year": 2014,
+      "km": 950000,
+      "axle_config": "4x2",
+      "price_try": 1450000,
+      "notes": "R440"
+    },
+    {
+      "make": "Scania",
+      "model_family": "S-series",
+      "year": 2019,
+      "km": 540000,
+      "axle_config": "4x2",
+      "price_try": 3250000,
+      "notes": "S500"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FH",
+      "year": 2018,
+      "km": 700000,
+      "axle_config": "4x2",
+      "price_try": 2380000,
+      "notes": "FH460"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FH",
+      "year": 2016,
+      "km": 880000,
+      "axle_config": "4x2",
+      "price_try": 1820000,
+      "notes": "FH4"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FH",
+      "year": 2014,
+      "km": 1020000,
+      "axle_config": "4x2",
+      "price_try": 1320000,
+      "notes": "FH4 early"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FH",
+      "year": 2020,
+      "km": 420000,
+      "axle_config": "4x2",
+      "price_try": 3480000,
+      "notes": "FH500"
+    },
+    {
+      "make": "DAF",
+      "model_family": "XF",
+      "year": 2018,
+      "km": 710000,
+      "axle_config": "4x2",
+      "price_try": 1980000,
+      "notes": "XF480 Super Space"
+    },
+    {
+      "make": "DAF",
+      "model_family": "XF",
+      "year": 2016,
+      "km": 860000,
+      "axle_config": "4x2",
+      "price_try": 1550000,
+      "notes": "XF106"
+    },
+    {
+      "make": "DAF",
+      "model_family": "XF",
+      "year": 2019,
+      "km": 580000,
+      "axle_config": "4x2",
+      "price_try": 2350000,
+      "notes": "XF480"
+    },
+    {
+      "make": "Renault",
+      "model_family": "T",
+      "year": 2018,
+      "km": 690000,
+      "axle_config": "4x2",
+      "price_try": 1680000,
+      "notes": "T480"
+    },
+    {
+      "make": "Renault",
+      "model_family": "T",
+      "year": 2016,
+      "km": 840000,
+      "axle_config": "4x2",
+      "price_try": 1320000,
+      "notes": "T460"
+    },
+    {
+      "make": "IVECO",
+      "model_family": "Stralis",
+      "year": 2017,
+      "km": 780000,
+      "axle_config": "4x2",
+      "price_try": 1450000,
+      "notes": "AS440"
+    },
+    {
+      "make": "IVECO",
+      "model_family": "S-Way",
+      "year": 2020,
+      "km": 450000,
+      "axle_config": "4x2",
+      "price_try": 2780000,
+      "notes": "S-Way 490"
+    },
+    {
+      "make": "Ford",
+      "model_family": "F-MAX",
+      "year": 2021,
+      "km": 380000,
+      "axle_config": "4x2",
+      "price_try": 2650000,
+      "notes": "Turkish-built"
+    },
+    {
+      "make": "Ford",
+      "model_family": "F-MAX",
+      "year": 2019,
+      "km": 520000,
+      "axle_config": "4x2",
+      "price_try": 2150000,
+      "notes": "F-MAX 500"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2018,
+      "km": 640000,
+      "axle_config": "6x2",
+      "price_try": 2680000,
+      "notes": "2545 6x2"
+    },
+    {
+      "make": "Scania",
+      "model_family": "R-series",
+      "year": 2017,
+      "km": 760000,
+      "axle_config": "6x2",
+      "price_try": 2280000,
+      "notes": "R450 6x2"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGX",
+      "year": 2015,
+      "km": 920000,
+      "axle_config": "4x2",
+      "price_try": 1480000,
+      "notes": "18.440"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FH",
+      "year": 2015,
+      "km": 940000,
+      "axle_config": "4x2",
+      "price_try": 1520000,
+      "notes": "FH460"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2013,
+      "km": 1150000,
+      "axle_config": "4x2",
+      "price_try": 980000,
+      "notes": "MP3 1844"
+    },
+    {
+      "make": "BMC",
+      "model_family": "Tugra",
+      "year": 2020,
+      "km": 310000,
+      "axle_config": "4x2",
+      "price_try": 1950000,
+      "notes": "Domestic make"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Arocs",
+      "year": 2019,
+      "km": 410000,
+      "axle_config": "6x4",
+      "price_try": 3120000,
+      "notes": "Construction spec"
+    },
+    {
+      "make": "DAF",
+      "model_family": "XF",
+      "year": 2015,
+      "km": 990000,
+      "axle_config": "4x2",
+      "price_try": 1180000,
+      "notes": "XF105/106"
+    },
+    {
+      "make": "Scania",
+      "model_family": "G-series",
+      "year": 2018,
+      "km": 610000,
+      "axle_config": "4x2",
+      "price_try": 2180000,
+      "notes": "G410"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FM",
+      "year": 2017,
+      "km": 720000,
+      "axle_config": "6x2",
+      "price_try": 1980000,
+      "notes": "FM450"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2021,
+      "km": 320000,
+      "axle_config": "4x2",
+      "price_try": 4250000,
+      "notes": "MP5 1848"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGX",
+      "year": 2020,
+      "km": 390000,
+      "axle_config": "4x2",
+      "price_try": 3180000,
+      "notes": "18.510"
+    },
+    {
+      "make": "Renault",
+      "model_family": "T",
+      "year": 2019,
+      "km": 540000,
+      "axle_config": "4x2",
+      "price_try": 1880000,
+      "notes": "T High 520"
+    },
+    {
+      "make": "IVECO",
+      "model_family": "Stralis",
+      "year": 2015,
+      "km": 910000,
+      "axle_config": "4x2",
+      "price_try": 980000,
+      "notes": "Hi-Way"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Arocs",
+      "year": 2018,
+      "km": 480000,
+      "axle_config": "6x4",
+      "body_type": "tipper",
+      "price_try": 2850000,
+      "notes": "Construction 6x4 tipper"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Arocs",
+      "year": 2016,
+      "km": 620000,
+      "axle_config": "6x4",
+      "body_type": "tipper",
+      "price_try": 2180000,
+      "notes": "Arocs 3342"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Arocs",
+      "year": 2021,
+      "km": 290000,
+      "axle_config": "6x4",
+      "body_type": "tipper",
+      "price_try": 3950000,
+      "notes": "Newer construction spec"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGS",
+      "year": 2017,
+      "km": 540000,
+      "axle_config": "6x4",
+      "body_type": "tipper",
+      "price_try": 2050000,
+      "notes": "TGS 33.440"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGS",
+      "year": 2019,
+      "km": 410000,
+      "axle_config": "8x4",
+      "body_type": "tipper",
+      "price_try": 2680000,
+      "notes": "8x4 construction"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FMX",
+      "year": 2018,
+      "km": 470000,
+      "axle_config": "6x4",
+      "body_type": "tipper",
+      "price_try": 2480000,
+      "notes": "FMX 460"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FMX",
+      "year": 2020,
+      "km": 330000,
+      "axle_config": "6x4",
+      "body_type": "tipper",
+      "price_try": 3180000,
+      "notes": "FMX 500"
+    },
+    {
+      "make": "Scania",
+      "model_family": "G-series",
+      "year": 2016,
+      "km": 610000,
+      "axle_config": "8x4",
+      "body_type": "tipper",
+      "price_try": 2280000,
+      "notes": "G450 8x4"
+    },
+    {
+      "make": "BMC",
+      "model_family": "Tugra",
+      "year": 2018,
+      "km": 420000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 1480000,
+      "notes": "Domestic tractor"
+    },
+    {
+      "make": "BMC",
+      "model_family": "Tugra",
+      "year": 2016,
+      "km": 580000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 1120000,
+      "notes": "Older Tugra"
+    },
+    {
+      "make": "BMC",
+      "model_family": "Tugra",
+      "year": 2022,
+      "km": 180000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 2480000,
+      "notes": "Late Tugra"
+    },
+    {
+      "make": "Ford",
+      "model_family": "F-MAX",
+      "year": 2018,
+      "km": 610000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 1780000,
+      "notes": "Early F-MAX"
+    },
+    {
+      "make": "Ford",
+      "model_family": "F-MAX",
+      "year": 2022,
+      "km": 210000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 3180000,
+      "notes": "Late F-MAX"
+    },
+    {
+      "make": "Ford",
+      "model_family": "Cargo",
+      "year": 2017,
+      "km": 540000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 1180000,
+      "notes": "Domestic Cargo"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2022,
+      "km": 210000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 5250000,
+      "notes": "MP5 1848 late"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2010,
+      "km": 1450000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 620000,
+      "notes": "MP3 late / MP2 mix"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FH",
+      "year": 2022,
+      "km": 190000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 4980000,
+      "notes": "FH5 500"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FH",
+      "year": 2011,
+      "km": 1380000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 680000,
+      "notes": "FH3/early FH4"
+    },
+    {
+      "make": "Scania",
+      "model_family": "S-series",
+      "year": 2021,
+      "km": 280000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 4680000,
+      "notes": "S500"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGX",
+      "year": 2022,
+      "km": 200000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 4450000,
+      "notes": "New TGX"
+    },
+    {
+      "make": "MAN",
+      "model_family": "TGX",
+      "year": 2011,
+      "km": 1320000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 710000,
+      "notes": "Euro 5 TGX"
+    },
+    {
+      "make": "DAF",
+      "model_family": "XF",
+      "year": 2012,
+      "km": 1280000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 690000,
+      "notes": "XF105"
+    },
+    {
+      "make": "DAF",
+      "model_family": "XF",
+      "year": 2021,
+      "km": 310000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 3650000,
+      "notes": "XF 480 late"
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model_family": "Actros",
+      "year": 2020,
+      "km": 410000,
+      "axle_config": "6x2",
+      "body_type": "tractor_unit",
+      "price_try": 3680000,
+      "notes": "2545 6x2"
+    },
+    {
+      "make": "Volvo",
+      "model_family": "FH",
+      "year": 2019,
+      "km": 560000,
+      "axle_config": "6x2",
+      "body_type": "tractor_unit",
+      "price_try": 2980000,
+      "notes": "FH 6x2"
+    },
+    {
+      "make": "DAF",
+      "model_family": "XF",
+      "year": 2017,
+      "km": 780000,
+      "axle_config": "6x2",
+      "body_type": "tractor_unit",
+      "price_try": 1880000,
+      "notes": "XF 6x2"
+    },
+    {
+      "make": "IVECO",
+      "model_family": "S-Way",
+      "year": 2022,
+      "km": 240000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 3480000,
+      "notes": "S-Way 490"
+    },
+    {
+      "make": "IVECO",
+      "model_family": "S-Way",
+      "year": 2019,
+      "km": 510000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 2380000,
+      "notes": "S-Way early"
+    },
+    {
+      "make": "Renault",
+      "model_family": "T",
+      "year": 2021,
+      "km": 340000,
+      "axle_config": "4x2",
+      "body_type": "tractor_unit",
+      "price_try": 2680000,
+      "notes": "T High 520"
+    },
+    {
+      "make": "Renault",
+      "model_family": "K",
+      "year": 2018,
+      "km": 390000,
+      "axle_config": "6x4",
+      "body_type": "tipper",
+      "price_try": 2150000,
+      "notes": "Construction K"
+    }
   ]
 }

@@ -435,6 +435,34 @@ def _stub_response(model_cls: type[T], images: list[tuple[str, bytes]], hint: di
             not_observable=["everything -- the stub provider cannot actually see the photos"],
         )
 
+    if model_cls is S.BadgeRead:
+        make, family, variant, gen, lo, hi = choice(
+            [
+                ("Mercedes-Benz", "Actros", "1845", "Actros MP4", 2012, 2018),
+                ("MAN", "TGX", "18.480", "TGX EURO6", 2014, 2020),
+                ("Scania", "R-series", "R450", "R-series Streamline", 2013, 2017),
+            ]
+        )
+        return model_cls(  # type: ignore[return-value]
+            make=make,
+            model_family=family,
+            model_variant=variant,
+            generation=gen,
+            generation_year_low=lo,
+            generation_year_high=hi,
+            estimated_power_hp=450,
+            euro_class="Euro 6",
+            evidence="[stub provider] synthetic badge read",
+        )
+
+    if model_cls is S.OdometerRead:
+        return model_cls(  # type: ignore[return-value]
+            digits_visible=True,
+            reading_km=400_000 + (seed % 600_000),
+            confidence=0.7,
+            notes="[stub provider] synthetic odometer read",
+        )
+
     # Unknown schema: return whatever the defaults allow.
     return model_cls()  # type: ignore[call-arg]
 

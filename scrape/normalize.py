@@ -384,6 +384,50 @@ def normalize_body_type(raw: str | None) -> str:
     return "other"
 
 
+
+def canonical_generation(make: str | None, family: str | None, year, label: str = "") -> str:
+    """Coarse generation bucket. MP4 vs MP5 is a price cliff that age alone smooths over."""
+    blob = f"{label or ''} {family or ''} {make or ''}".lower()
+    try:
+        y = int(year) if year else 0
+    except (TypeError, ValueError):
+        y = 0
+    if "mp5" in blob or "actros 5" in blob or "new generation actros" in blob:
+        return "actros_mp5"
+    if "mp4" in blob or "streamspace" in blob:
+        return "actros_mp4"
+    if "mp3" in blob:
+        return "actros_mp3"
+    if "next gen" in blob or "new gen" in blob or "s-series" in blob:
+        return "scania_ng"
+    if "streamline" in blob:
+        return "scania_streamline"
+    fam = (family or "").lower()
+    if "actros" in fam and y:
+        if y >= 2019:
+            return "actros_mp5"
+        if y >= 2011:
+            return "actros_mp4"
+        if y >= 2008:
+            return "actros_mp3"
+        return "actros_early"
+    if ("tgx" in fam or "tgs" in fam) and y:
+        return "man_tg_new" if y >= 2020 else "man_tg_euro6" if y >= 2013 else "man_tg_early"
+    if fam in {"xf", "xf105", "xf106"} and y:
+        return "daf_xf_new" if y >= 2021 else "daf_xf106" if y >= 2013 else "daf_xf105"
+    if fam in {"fh", "fh16", "fh4", "fh5"} and y:
+        return "volvo_fh5" if y >= 2021 else "volvo_fh4" if y >= 2012 else "volvo_fh3"
+    if y >= 2019:
+        return "era_2019plus"
+    if y >= 2013:
+        return "era_euro6"
+    if y >= 2006:
+        return "era_euro5"
+    if y:
+        return "era_pre_euro5"
+    return "unknown"
+
+
 def normalize_listing(row: dict) -> dict:
     """Add canonical columns to a scraped or inferred listing row."""
     make = canonical_make(row.get("make"))
@@ -401,4 +445,7 @@ def normalize_listing(row: dict) -> dict:
     out["euro_canon"] = euro_number(row.get("euro_class"))
     out["condition_canon"] = normalize_condition(row.get("condition_flag"))
     out["body_canon"] = normalize_body_type(row.get("body_type"))
+    out["generation_canon"] = canonical_generation(
+        make, family, row.get("year"), row.get("generation") or ""
+    )
     return out

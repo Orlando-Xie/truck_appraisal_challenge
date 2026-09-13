@@ -106,6 +106,11 @@ def blend_with_comps(base: PriceRange, comp_stats: dict, weight: float = 0.30) -
     if not median or n < 3:
         return base, None
 
+    tightness = float(comp_stats.get("median_similarity") or 0.0)
+    # Raise the blend when at least five tight comps sit next to this spec.
+    if n >= 5 and tightness >= 0.55:
+        weight = max(weight, 0.45)
+
     # Trust the comparables more when there are more of them.
     w = weight * min(1.0, n / 8.0)
     blended_mid = (1 - w) * base.mid + w * float(median)
@@ -171,6 +176,9 @@ def round_range(pr: PriceRange, currency: str, step: float | None = None) -> Pri
     return PriceRange(low=r(pr.low), mid=r(pr.mid), high=r(pr.high), currency=currency)
 
 
-def to_try(pr: PriceRange, calibration: dict) -> PriceRange:
-    rate = calibration["turkiye_multiplier"] * calibration["eur_try"]
+def to_try(pr: PriceRange, calibration: dict, spec: dict | None = None) -> PriceRange:
+    from pricing import fx as fx_mod
+
+    mult = fx_mod.multiplier_for(spec, calibration)
+    rate = mult * calibration["eur_try"]
     return PriceRange(low=pr.low * rate, mid=pr.mid * rate, high=pr.high * rate, currency="TRY")
